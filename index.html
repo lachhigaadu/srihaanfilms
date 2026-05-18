@@ -1,13 +1,457 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Simple Web Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SRIHAAN FILMS</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#000;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    header{
+      position:fixed;
+      width:100%;
+      top:0;
+      left:0;
+      padding:20px 60px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      z-index:1000;
+      background:linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+    }
+
+    .logo{
+      color:#fd8650;
+      font-size:32px;
+      font-weight:bold;
+      letter-spacing:2px;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin-left:25px;
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:#fd8650;
+    }
+
+    .hero{
+      width:100%;
+      height:100vh;
+      background:url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1920') center/cover no-repeat;
+      position:relative;
+      display:flex;
+      align-items:center;
+      padding:0 80px;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:linear-gradient(to right, rgba(0,0,0,0.95), rgba(0,0,0,0.3));
+      top:0;
+      left:0;
+    }
+
+    .hero-content{
+      position:relative;
+      max-width:650px;
+      z-index:2;
+    }
+
+    .hero h1{
+      font-size:70px;
+      margin-bottom:20px;
+      color:#fd8650;
+    }
+
+    .hero p{
+      font-size:20px;
+      line-height:1.6;
+      margin-bottom:30px;
+      color:#ddd;
+    }
+
+    .buttons{
+      display:flex;
+      gap:20px;
+    }
+
+    .btn{
+      padding:15px 35px;
+      border:none;
+      border-radius:5px;
+      font-size:18px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .play{
+      background:#fd8650;
+      color:white;
+    }
+
+    .play:hover{
+      background:#ff6a1c;
+    }
+
+    .info{
+      background:rgba(255,255,255,0.2);
+      color:white;
+      backdrop-filter:blur(5px);
+    }
+
+    section{
+      padding:80px 60px;
+    }
+
+    .section-title{
+      font-size:32px;
+      margin-bottom:30px;
+    }
+
+    .movie-row{
+      display:flex;
+      gap:20px;
+      overflow-x:auto;
+      scrollbar-width:none;
+    }
+
+    .movie-card{
+      min-width:280px;
+      height:170px;
+      border-radius:10px;
+      overflow:hidden;
+      position:relative;
+      transition:0.4s;
+      cursor:pointer;
+    }
+
+    .movie-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .movie-card:hover{
+      transform:scale(1.08);
+    }
+
+    .movie-overlay{
+      position:absolute;
+      bottom:0;
+      width:100%;
+      padding:15px;
+      background:linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+    }
+
+    .movie-overlay h3{
+      font-size:22px;
+    }
+
+    .social-section{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .social-card{
+      background:#111;
+      border:1px solid #222;
+      border-radius:15px;
+      padding:25px;
+      transition:0.3s;
+    }
+
+    .social-card:hover{
+      border-color:#fd8650;
+      transform:translateY(-5px);
+    }
+
+    .social-card h2{
+      color:#fd8650;
+      margin-bottom:15px;
+    }
+
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .about img{
+      width:100%;
+      border-radius:20px;
+    }
+
+    .about-text h2{
+      font-size:40px;
+      margin-bottom:20px;
+      color:#fd8650;
+    }
+
+    .about-text p{
+      line-height:1.8;
+      color:#ccc;
+      font-size:18px;
+    }
+
+    .audition-form{
+      max-width:700px;
+      margin:auto;
+      background:#111;
+      padding:40px;
+      border-radius:20px;
+    }
+
+    .audition-form h2{
+      margin-bottom:30px;
+      color:#fd8650;
+      text-align:center;
+    }
+
+    .audition-form input,
+    .audition-form textarea{
+      width:100%;
+      padding:15px;
+      margin-bottom:20px;
+      border:none;
+      border-radius:8px;
+      background:#222;
+      color:white;
+    }
+
+    .audition-form button{
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:8px;
+      background:#fd8650;
+      color:white;
+      font-size:18px;
+      cursor:pointer;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      background:#050505;
+      color:#888;
+    }
+
+    @media(max-width:768px){
+
+      header{
+        padding:20px;
+      }
+
+      .hero{
+        padding:0 30px;
+      }
+
+      .hero h1{
+        font-size:45px;
+      }
+
+      .about{
+        grid-template-columns:1fr;
+      }
+
+      section{
+        padding:60px 25px;
+      }
+    }
+
+  </style>
 </head>
+
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>This is a simple paragraph on a basic HTML page.</p>
-    <a href="https://google.com">Click here to visit Google</a>
+
+  <header>
+    <div class="logo">SRIHAAN FILMS</div>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Projects</a>
+      <a href="#">About</a>
+      <a href="#">Auditions</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>WE SHOOT CINEMA</h1>
+
+      <p>
+        SRIHAAN FILMS creates cinematic worlds with powerful storytelling,
+        emotional visuals, and unforgettable characters.
+      </p>
+
+      <div class="buttons">
+        <button class="btn play">▶ Play</button>
+        <button class="btn info">More Info</button>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section>
+
+    <h2 class="section-title">Trending Projects</h2>
+
+    <div class="movie-row">
+
+      <div class="movie-card">
+        <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=1200">
+
+        <div class="movie-overlay">
+          <h3>Dear Sister</h3>
+        </div>
+      </div>
+
+      <div class="movie-card">
+        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1200">
+
+        <div class="movie-overlay">
+          <h3>Ambharasi</h3>
+        </div>
+      </div>
+
+      <div class="movie-card">
+        <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=1200">
+
+        <div class="movie-overlay">
+          <h3>Future Water Bank</h3>
+        </div>
+      </div>
+
+      <div class="movie-card">
+        <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=1200">
+
+        <div class="movie-overlay">
+          <h3>Chola Queen</h3>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section>
+
+    <h2 class="section-title">Social Media</h2>
+
+    <div class="social-section">
+
+      <div class="social-card">
+        <h2>Instagram</h2>
+        <p>
+          Behind the scenes, posters, reels, and cinematic moments.
+        </p>
+      </div>
+
+      <div class="social-card">
+        <h2>Facebook</h2>
+        <p>
+          Latest announcements, trailers, and production updates.
+        </p>
+      </div>
+
+      <div class="social-card">
+        <h2>Threads</h2>
+        <p>
+          Daily film discussions and creative storytelling updates.
+        </p>
+      </div>
+
+      <div class="social-card">
+        <h2>Twitter / X</h2>
+        <p>
+          Breaking updates, casting calls, and trending film news.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="about">
+
+    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1200">
+
+    <div class="about-text">
+
+      <h2>About Us</h2>
+
+      <p>
+        SRIHAAN FILMS is a cinematic production company founded by
+        Chandrashekar Giddalamari — a passionate filmmaker,
+        cinematographer, editor, and producer.
+      </p>
+
+      <br>
+
+      <p>
+        From independent short films to large cinematic visions,
+        SRIHAAN FILMS focuses on emotionally powerful storytelling,
+        rich visuals, and unique film experiences.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section>
+
+    <div class="audition-form">
+
+      <h2>Actor Audition Form</h2>
+
+      <form>
+
+        <input type="text" placeholder="Full Name">
+
+        <input type="email" placeholder="Email Address">
+
+        <input type="tel" placeholder="Phone Number">
+
+        <input type="text" placeholder="Age">
+
+        <textarea rows="5" placeholder="Tell us about yourself"></textarea>
+
+        <button type="submit">Submit Audition</button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 SRIHAAN FILMS. All Rights Reserved.
+  </footer>
+
 </body>
 </html>
