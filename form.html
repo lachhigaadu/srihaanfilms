@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Form</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family:Arial;
+      background:#111;
+      color:white;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+
+    .form-box{
+      width:400px;
+      background:#1c1c1c;
+      padding:30px;
+      border-radius:15px;
+    }
+
+    h1{
+      text-align:center;
+      color:#ff9059;
+      margin-bottom:25px;
+    }
+
+    input, textarea{
+      width:100%;
+      padding:12px;
+      margin-bottom:15px;
+      border:none;
+      border-radius:8px;
+      background:#2b2b2b;
+      color:white;
+    }
+
+    button{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:8px;
+      background:#ff9059;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+    }
+
+    button:hover{
+      opacity:0.9;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-box">
+
+  <h1>Application Form</h1>
+
+  <form action="https://formsubmit.co/YOURMAIL@gmail.com" method="POST">
+
+    <!-- Disable Captcha -->
+    <input type="hidden" name="_captcha" value="false">
+
+    <!-- Thank You Page -->
+    <input type="hidden" name="_next" value="https://www.srihaanfilms.com/thankyou.html">
+
+    <input type="text" name="Name" placeholder="Your Name" required>
+
+    <input type="email" name="Email" placeholder="Your Email" required>
+
+    <input type="tel" name="Phone" placeholder="Phone Number" required>
+
+    <textarea name="Message" placeholder="Your Message"></textarea>
+
+    <button type="submit">Submit</button>
+
+  </form>
+
+</div>
+
+</body>
+</html>
