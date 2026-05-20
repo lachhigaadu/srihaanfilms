@@ -22,7 +22,7 @@ body{
 }
 
 .container{
-    max-width:1000px;
+    max-width:1100px;
     margin:auto;
     background:#1a1a1a;
     padding:40px;
@@ -72,11 +72,6 @@ select{
     font-size:15px;
 }
 
-textarea{
-    height:120px;
-    resize:none;
-}
-
 input:focus,
 textarea:focus,
 select:focus{
@@ -84,27 +79,9 @@ select:focus{
     border:2px solid #ff9059;
 }
 
-.file-note{
-    font-size:13px;
-    color:#999;
-    margin-top:5px;
-}
-
-.checkbox{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-top:20px;
-}
-
-.checkbox input{
-    width:auto;
-}
-
-.warning{
-    color:#ff9059;
-    margin-top:20px;
-    font-size:14px;
+textarea{
+    height:120px;
+    resize:none;
 }
 
 button{
@@ -117,11 +94,26 @@ button{
     font-size:18px;
     cursor:pointer;
     margin-top:30px;
-    transition:0.3s;
 }
 
 button:hover{
     opacity:0.9;
+}
+
+.warning{
+    color:#ff9059;
+    margin-top:20px;
+}
+
+.checkbox{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:20px;
+}
+
+.checkbox input{
+    width:auto;
 }
 
 @media(max-width:768px){
@@ -151,9 +143,9 @@ h1{
 
 <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
 
-<!-- WEB3FORMS ACCESS KEY -->
+<!-- ACCESS KEY -->
 
-<input type="hidden" name="access_key" value="75fba7b6-743f-4c2d-8346-f4f0a4e94e41">
+<input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
 
 <!-- THANK YOU PAGE -->
 
@@ -167,7 +159,7 @@ h1{
 
 <div class="input-box">
 <label>Full Name *</label>
-<input type="text" name="Full Name" placeholder="Enter Full Name" required minlength="3" maxlength="50">
+<input type="text" name="Full Name" placeholder="Enter Full Name" required minlength="3">
 </div>
 
 <div class="input-box">
@@ -182,7 +174,7 @@ h1{
 
 <div class="input-box">
 <label>Age *</label>
-<input type="number" name="Age" placeholder="Enter Age" required min="1" max="100">
+<input type="number" name="Age" required min="1" max="100">
 </div>
 
 <div class="input-box">
@@ -203,10 +195,9 @@ h1{
 <input 
 type="tel" 
 name="Mobile Number"
-placeholder="Enter 10 Digit Mobile Number"
 required
 pattern="[0-9]{10}"
-title="Enter valid 10 digit mobile number">
+placeholder="10 Digit Mobile Number">
 
 </div>
 
@@ -216,32 +207,25 @@ title="Enter valid 10 digit mobile number">
 <input 
 type="tel" 
 name="WhatsApp Number"
-placeholder="Enter 10 Digit WhatsApp Number"
 required
 pattern="[0-9]{10}"
-title="Enter valid 10 digit WhatsApp number">
+placeholder="10 Digit WhatsApp Number">
 
 </div>
 
 <div class="input-box">
 <label>Email Address *</label>
-
-<input 
-type="email" 
-name="Email Address"
-placeholder="Enter Email Address"
-required>
-
+<input type="email" name="Email Address" placeholder="Enter Email Address" required>
 </div>
 
 </div>
 
 <div class="input-box">
 <label>Current Address *</label>
-<textarea name="Current Address" placeholder="Enter Current Address" required></textarea>
+<textarea name="Current Address" required placeholder="Enter Current Address"></textarea>
 </div>
 
-<!-- LOCATION -->
+<!-- LOCATION DETAILS -->
 
 <h2>Location Details</h2>
 
@@ -255,8 +239,8 @@ required>
 
 <option value="">Select State</option>
 
-<option value="Andhra Pradesh">Andhra Pradesh</option>
 <option value="Telangana">Telangana</option>
+<option value="Andhra Pradesh">Andhra Pradesh</option>
 <option value="Tamil Nadu">Tamil Nadu</option>
 <option value="Karnataka">Karnataka</option>
 <option value="Maharashtra">Maharashtra</option>
@@ -269,7 +253,7 @@ required>
 
 <label>Select District *</label>
 
-<select id="district" name="District" required onchange="loadCities()">
+<select id="district" name="District" required onchange="loadMandals()">
 
 <option value="">Select District</option>
 
@@ -281,11 +265,11 @@ required>
 
 <div class="input-box">
 
-<label>Select City *</label>
+<label>Select Mandal *</label>
 
-<select id="city" name="City" required>
+<select id="mandal" name="Mandal" required>
 
-<option value="">Select City</option>
+<option value="">Select Mandal</option>
 
 </select>
 
@@ -299,32 +283,32 @@ required>
 
 <div class="input-box">
 <label>Height *</label>
-<input type="text" name="Height" placeholder="Example: 5.8 ft" required>
+<input type="text" name="Height" required placeholder="Example: 5.8 ft">
 </div>
 
 <div class="input-box">
 <label>Weight *</label>
-<input type="text" name="Weight" placeholder="Example: 70 Kg" required>
+<input type="text" name="Weight" required placeholder="Example: 70 Kg">
 </div>
 
 <div class="input-box">
 <label>Skin Tone</label>
-<input type="text" name="Skin Tone" placeholder="Enter Skin Tone">
+<input type="text" name="Skin Tone">
 </div>
 
 <div class="input-box">
 <label>Hair Color</label>
-<input type="text" name="Hair Color" placeholder="Enter Hair Color">
+<input type="text" name="Hair Color">
 </div>
 
 <div class="input-box">
 <label>Eye Color</label>
-<input type="text" name="Eye Color" placeholder="Enter Eye Color">
+<input type="text" name="Eye Color">
 </div>
 
 <div class="input-box">
 <label>Body Type</label>
-<input type="text" name="Body Type" placeholder="Enter Body Type">
+<input type="text" name="Body Type">
 </div>
 
 </div>
@@ -337,32 +321,32 @@ required>
 
 <div class="input-box">
 <label>Acting Experience *</label>
-<input type="text" name="Acting Experience" placeholder="Acting Experience" required>
+<input type="text" name="Acting Experience" required>
 </div>
 
 <div class="input-box">
 <label>Languages Known *</label>
-<input type="text" name="Languages Known" placeholder="Languages Known" required>
+<input type="text" name="Languages Known" required>
 </div>
 
 <div class="input-box">
 <label>Dancing Skills</label>
-<input type="text" name="Dancing Skills" placeholder="Dancing Skills">
+<input type="text" name="Dancing Skills">
 </div>
 
 <div class="input-box">
 <label>Singing Skills</label>
-<input type="text" name="Singing Skills" placeholder="Singing Skills">
+<input type="text" name="Singing Skills">
 </div>
 
 <div class="input-box">
 <label>Action Skills</label>
-<input type="text" name="Action Skills" placeholder="Action Skills">
+<input type="text" name="Action Skills">
 </div>
 
 <div class="input-box">
 <label>Applying For Role *</label>
-<input type="text" name="Applying For Role" placeholder="Applying For Role" required>
+<input type="text" name="Applying For Role" required>
 </div>
 
 </div>
@@ -375,12 +359,12 @@ required>
 
 <div class="input-box">
 <label>Instagram Profile *</label>
-<input type="url" name="Instagram" placeholder="Instagram Profile Link" required>
+<input type="url" name="Instagram" required>
 </div>
 
 <div class="input-box">
 <label>YouTube Channel</label>
-<input type="url" name="YouTube" placeholder="YouTube Channel Link">
+<input type="url" name="YouTube">
 </div>
 
 </div>
@@ -394,30 +378,26 @@ required>
 <div class="input-box">
 <label>Upload Headshot *</label>
 <input type="file" name="Headshot" required accept="image/*">
-<p class="file-note">Upload JPG / PNG Image</p>
 </div>
 
 <div class="input-box">
 <label>Upload Full Size Photo *</label>
 <input type="file" name="Full Size Photo" required accept="image/*">
-<p class="file-note">Upload JPG / PNG Image</p>
 </div>
 
 <div class="input-box">
 <label>Upload Introduction Video *</label>
 <input type="file" name="Introduction Video" required accept="video/*">
-<p class="file-note">Upload MP4 Video</p>
 </div>
 
 <div class="input-box">
-<label>Resume / Portfolio PDF *</label>
+<label>Resume PDF *</label>
 <input type="file" name="Resume PDF" required accept=".pdf">
-<p class="file-note">Upload PDF File</p>
 </div>
 
 </div>
 
-<!-- AUDITION DETAILS -->
+<!-- AUDITION -->
 
 <h2>Audition Details</h2>
 
@@ -425,7 +405,7 @@ required>
 
 <div class="input-box">
 <label>Current Location *</label>
-<input type="text" name="Current Location" placeholder="Current Location" required>
+<input type="text" name="Current Location" required>
 </div>
 
 <div class="input-box">
@@ -463,46 +443,22 @@ Submit Application
 
 </div>
 
-<!-- JAVASCRIPT -->
-
 <script>
 
 const districtData = {
 
 "Telangana": [
 "Adilabad",
-"Bhadradri Kothagudem",
-"Hanumakonda",
 "Hyderabad",
-"Jagitial",
-"Jangaon",
-"Jayashankar Bhupalapally",
-"Jogulamba Gadwal",
-"Kamareddy",
 "Karimnagar",
 "Khammam",
-"Kumuram Bheem Asifabad",
-"Mahabubabad",
-"Mahabubnagar",
-"Mancherial",
-"Medak",
-"Medchal-Malkajgiri",
-"Mulugu",
-"Nagarkurnool",
 "Nalgonda",
-"Narayanpet",
-"Nirmal",
 "Nizamabad",
-"Peddapalli",
-"Rajanna Sircilla",
 "Ranga Reddy",
 "Sangareddy",
 "Siddipet",
 "Suryapet",
-"Vikarabad",
-"Wanaparthy",
-"Warangal",
-"Yadadri Bhuvanagiri"
+"Warangal"
 ],
 
 "Andhra Pradesh": [
@@ -531,301 +487,59 @@ const districtData = {
 
 };
 
-const cityData = {
-
- "Adilabad": [
-"Adilabad Rural",
-"Adilabad Urban",
-"Bazarhathnoor",
-"Bela",
-"Boath",
-"Gadiguda",
-"Gudihathnoor",
-"Ichoda",
-"Indervelly",
-"Jainad",
-"Neradigonda",
-"Sirikonda",
-"Talamadugu",
-"Tamsi",
-"Utnur"
-],
-
-"Bhadradri Kothagudem": [
-"Aswapuram",
-"Aswaraopeta",
-"Bhadrachalam",
-"Burgampahad",
-"Chandrugonda",
-"Cherla",
-"Dammapeta",
-"Dummugudem",
-"Gundala",
-"Julurpad",
-"Karakagudem",
-"Manuguru",
-"Mulakalapalli",
-"Palwancha",
-"Pinapaka",
-"Sujathanagar",
-"Tekulapalli",
-"Yellandu"
-],
-
-"Hanumakonda": [
-"Bheemadevarpally",
-"Dharmasagar",
-"Elkathurthy",
-"Hanumakonda",
-"Hasanparthy",
-"Inavole",
-"Kamalapur",
-"Khazipet"
-],
+const mandalData = {
 
 "Hyderabad": [
 "Amberpet",
 "Asif Nagar",
 "Bahadurpura",
-"Bandlaguda",
 "Charminar",
-"Golkonda",
-"Himayatnagar",
 "Khairatabad",
 "Musheerabad",
 "Nampally",
-"Secunderabad",
-"Shaikpet",
-"Tolichowki"
-],
-
-"Jagitial": [
-"Beerpur",
-"Buggaram",
-"Dharmapuri",
-"Gollapalli",
-"Ibrahimpatnam",
-"Jagitial",
-"Kathlapur",
-"Kodimyala",
-"Korutla",
-"Malial",
-"Medipalli",
-"Metpalli",
-"Pegadapalli",
-"Raikal",
-"Sarangapur",
-"Velgatoor"
-],
-
-"Jangaon": [
-"Bachannapet",
-"Devaruppula",
-"Ghanpur Station",
-"Jangaon",
-"Kodakandla",
-"Lingalaghanpur",
-"Narmetta",
-"Palakurthy",
-"Raghunathpalle",
-"Zaffergadh"
-],
-
-"Kamareddy": [
-"Banswada",
-"Bhiknoor",
-"Bibipet",
-"Domakonda",
-"Gandhari",
-"Jukkal",
-"Kamareddy",
-"Lingampet",
-"Machareddy",
-"Madnoor",
-"Nagireddypet",
-"Pitlam",
-"Rajampet",
-"Ramareddy",
-"Sadasivanagar",
-"Tadwai",
-"Yellareddy"
+"Shaikpet"
 ],
 
 "Karimnagar": [
-"Chigurumamidi",
 "Choppadandi",
 "Gangadhara",
-"Ganneruvaram",
 "Huzurabad",
 "Karimnagar",
-"Kothapalli",
-"Manakondur",
-"Ramagundam",
-"Shankarapatnam",
-"Thimmapur",
-"Veenavanka"
+"Manakondur"
 ],
 
 "Khammam": [
 "Bonakal",
-"Chinthakani",
-"Enkoor",
 "Khammam Rural",
 "Khammam Urban",
-"Kamepally",
-"Konijerla",
 "Kusumanchi",
-"Mudigonda",
-"Nelakondapalli",
-"Penuballi",
-"Raghunadhapalem",
 "Sathupalli",
-"Singareni",
-"Thallada",
-"Vemsoor",
-"Wyra",
-"Yerrupalem"
+"Wyra"
 ],
 
 "Nalgonda": [
-"Anumula",
 "Chandur",
-"Chityal",
-"Damarcherla",
 "Devarakonda",
-"Gurrampode",
-"Kangal",
-"Kattangur",
-"Ketepally",
 "Miryalaguda",
 "Munugode",
-"Nalgonda",
-"Nampally",
-"Narketpally",
-"Nidamanur",
-"Pedda Adiserlapally",
-"Tipparthi",
-"Tirumalagiri",
-"Vemulapally"
+"Nalgonda"
 ],
 
 "Nizamabad": [
 "Armur",
-"Balkonda",
-"Bheemgal",
 "Bodhan",
-"Dharpally",
 "Dichpally",
-"Indalwai",
-"Jakranpally",
-"Kamareddy",
-"Kotgiri",
-"Makloor",
-"Mortad",
-"Mosra",
-"Mugpal",
-"Nandipet",
-"Navipet",
 "Nizamabad North",
-"Nizamabad South",
-"Renjal",
-"Varni",
-"Velpur",
-"Yedpalle"
-],
-
-"Ranga Reddy": [
-"Chevella",
-"Ibrahimpatnam",
-"Kandukur",
-"Maheshwaram",
-"Moinabad",
-"Rajendranagar",
-"Shabad",
-"Shamshabad",
-"Shankarpally",
-"Yacharam"
-],
-
-"Sangareddy": [
-"Ameenpur",
-"Andole",
-"Gummadidala",
-"Hathnoora",
-"Jharasangam",
-"Kandi",
-"Kohir",
-"Kondapur",
-"Manoor",
-"Munipally",
-"Nagalgidda",
-"Narayankhed",
-"Patancheru",
-"Pulkal",
-"Raikode",
-"Ramachandrapuram",
-"Sadasivpet",
-"Sangareddy",
-"Zaheerabad"
-],
-
-"Siddipet": [
-"Akkannapet",
-"Bejjanki",
-"Chinnakodur",
-"Doulthabad",
-"Dubbak",
-"Gajwel",
-"Husnabad",
-"Jagdevpur",
-"Koheda",
-"Kondapak",
-"Kukunoorpally",
-"Maddur",
-"Markook",
-"Mirdoddi",
-"Mulugu",
-"Raipole",
-"Siddipet",
-"Thoguta",
-"Wargal"
-],
-
-"Suryapet": [
-"Ananthagiri",
-"Chilkur",
-"Chivvemla",
-"Garidepally",
-"Huzurnagar",
-"Kodad",
-"Maddirala",
-"Mellacheruvu",
-"Mothey",
-"Munagala",
-"Nadigudem",
-"Nereducherla",
-"Noothankal",
-"Penpahad",
-"Suryapet",
-"Thirumalagiri",
-"Tungaturthy"
+"Nizamabad South"
 ],
 
 "Warangal": [
 "Atmakur",
-"Chennaraopet",
 "Duggondi",
-"Geesugonda",
-"Khanapur",
-"Nallabelly",
 "Narsampet",
 "Parvathagiri",
-"Raiparthy",
-"Sangam",
-"Shayampet",
-"Wardhannapet",
 "Warangal"
-]   
+],
 
 "Visakhapatnam": [
 "Gajuwaka",
@@ -852,11 +566,18 @@ let district = document.getElementById("district");
 
 district.innerHTML = '<option value="">Select District</option>';
 
+document.getElementById("mandal").innerHTML =
+'<option value="">Select Mandal</option>';
+
 if(districtData[state]){
 
 districtData[state].forEach(function(item){
 
-district.innerHTML += `<option value="${item}">${item}</option>`;
+district.innerHTML += `
+<option value="${item}">
+${item}
+</option>
+`;
 
 });
 
@@ -864,19 +585,23 @@ district.innerHTML += `<option value="${item}">${item}</option>`;
 
 }
 
-function loadCities(){
+function loadMandals(){
 
 let district = document.getElementById("district").value;
 
-let city = document.getElementById("city");
+let mandal = document.getElementById("mandal");
 
-city.innerHTML = '<option value="">Select City</option>';
+mandal.innerHTML = '<option value="">Select Mandal</option>';
 
-if(cityData[district]){
+if(mandalData[district]){
 
-cityData[district].forEach(function(item){
+mandalData[district].forEach(function(item){
 
-city.innerHTML += `<option value="${item}">${item}</option>`;
+mandal.innerHTML += `
+<option value="${item}">
+${item}
+</option>
+`;
 
 });
 
