@@ -62,25 +62,24 @@
 
   <h1>Application Form</h1>
 
-  <form action="https://formsubmit.co/lachhigaadu@gmail.com" method="POST">
+  
+<form action="https://api.web3forms.com/submit" method="POST">
 
-    <!-- Disable Captcha -->
-    <input type="hidden" name="_captcha" value="false">
+  <!-- Replace with your Access Key -->
+  <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
 
-    <!-- Thank You Page -->
-    <input type="hidden" name="_next" value="https://www.srihaanfilms.com/thankyou.html">
+  <input type="text" name="name" placeholder="Your Name" required>
 
-    <input type="text" name="Name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
 
-    <input type="email" name="Email" placeholder="Your Email" required>
+  <textarea name="message" placeholder="Your Message"></textarea>
 
-    <input type="tel" name="Phone" placeholder="Phone Number" required>
+  <input type="hidden" name="redirect" value="https://www.srihaanfilms.com/thankyou.html">
 
-    <textarea name="Message" placeholder="Your Message"></textarea>
+  <button type="submit">Submit</button>
 
-    <button type="submit">Submit</button>
+</form>
 
-  </form>
 
 </div>
 
