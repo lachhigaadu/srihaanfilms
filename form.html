@@ -12,7 +12,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 body{
@@ -72,6 +72,11 @@ select{
     font-size:15px;
 }
 
+textarea{
+    height:150px;
+    resize:none;
+}
+
 input:focus,
 textarea:focus,
 select:focus{
@@ -79,9 +84,13 @@ select:focus{
     border:2px solid #ff9059;
 }
 
-textarea{
-    height:120px;
-    resize:none;
+/* SUCCESS VALIDATION */
+
+input:valid,
+textarea:valid,
+select:valid{
+    background:#90ee90;
+    color:black;
 }
 
 button{
@@ -103,17 +112,38 @@ button:hover{
 .warning{
     color:#ff9059;
     margin-top:20px;
+    font-size:14px;
 }
 
 .checkbox{
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     gap:10px;
     margin-top:20px;
 }
 
 .checkbox input{
     width:auto;
+    margin-top:5px;
+}
+
+.privacy-box{
+    background:#111;
+    padding:20px;
+    border-radius:12px;
+    margin-top:20px;
+    border:1px solid #333;
+}
+
+.privacy-box h3{
+    color:#ff9059;
+    margin-bottom:10px;
+}
+
+.privacy-box p{
+    color:#ccc;
+    line-height:1.7;
+    font-size:14px;
 }
 
 @media(max-width:768px){
@@ -145,7 +175,7 @@ h1{
 
 <!-- ACCESS KEY -->
 
-<input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+<input type="hidden" name="access_key" value="75fba7b6-743f-4c2d-8346-f4f0a4e94e41">
 
 <!-- THANK YOU PAGE -->
 
@@ -220,58 +250,17 @@ placeholder="10 Digit WhatsApp Number">
 
 </div>
 
-<div class="input-box">
-<label>Current Address *</label>
-<textarea name="Current Address" required placeholder="Enter Current Address"></textarea>
-</div>
+<!-- ABOUT -->
 
-<!-- LOCATION DETAILS -->
-
-<h2>Location Details</h2>
-
-<div class="row">
+<h2>About Yourself</h2>
 
 <div class="input-box">
+<label>Write About your self *</label>
 
-<label>Select State *</label>
-
-<select id="state" name="State" required onchange="loadDistricts()">
-
-<option value="">Select State</option>
-
-<option value="Telangana">Telangana</option>
-<option value="Andhra Pradesh">Andhra Pradesh</option>
-<option value="Tamil Nadu">Tamil Nadu</option>
-<option value="Karnataka">Karnataka</option>
-<option value="Maharashtra">Maharashtra</option>
-
-</select>
-
-</div>
-
-<div class="input-box">
-
-<label>Select District *</label>
-
-<select id="district" name="District" required onchange="loadMandals()">
-
-<option value="">Select District</option>
-
-</select>
-
-</div>
-
-</div>
-
-<div class="input-box">
-
-<label>Select Mandal *</label>
-
-<select id="mandal" name="Mandal" required>
-
-<option value="">Select Mandal</option>
-
-</select>
+<textarea 
+name="About Yourself" 
+required 
+placeholder="Write about yourself, acting passion, experience, interests, goals etc..."></textarea>
 
 </div>
 
@@ -386,18 +375,13 @@ placeholder="10 Digit WhatsApp Number">
 </div>
 
 <div class="input-box">
-<label>Upload Introduction Video *</label>
-<input type="file" name="Introduction Video" required accept="video/*">
-</div>
-
-<div class="input-box">
 <label>Resume PDF *</label>
 <input type="file" name="Resume PDF" required accept=".pdf">
 </div>
 
 </div>
 
-<!-- AUDITION -->
+<!-- AUDITION DETAILS -->
 
 <h2>Audition Details</h2>
 
@@ -422,13 +406,30 @@ placeholder="10 Digit WhatsApp Number">
 
 </div>
 
-<!-- DECLARATION -->
+<!-- PRIVACY POLICY -->
 
-<h2>Declaration</h2>
+<h2>Privacy Policy & Declaration</h2>
+
+<div class="privacy-box">
+
+<h3>Privacy Policy</h3>
+
+<p>
+Your personal information, photos and documents are securely collected only for audition and casting purposes. 
+We do not sell or share your information with third parties without permission. 
+By submitting this form, you agree to our audition review process and privacy policy.
+</p>
 
 <div class="checkbox">
+
 <input type="checkbox" required>
-<label>I confirm all details are true and valid.</label>
+
+<label>
+I confirm all details are true and I agree to the Privacy Policy and Terms & Conditions.
+</label>
+
+</div>
+
 </div>
 
 <p class="warning">
@@ -442,174 +443,6 @@ Submit Application
 </form>
 
 </div>
-
-<script>
-
-const districtData = {
-
-"Telangana": [
-"Adilabad",
-"Hyderabad",
-"Karimnagar",
-"Khammam",
-"Nalgonda",
-"Nizamabad",
-"Ranga Reddy",
-"Sangareddy",
-"Siddipet",
-"Suryapet",
-"Warangal"
-],
-
-"Andhra Pradesh": [
-"Visakhapatnam",
-"Vijayawada",
-"Guntur",
-"Nellore"
-],
-
-"Tamil Nadu": [
-"Chennai",
-"Coimbatore",
-"Madurai"
-],
-
-"Karnataka": [
-"Bangalore",
-"Mysore"
-],
-
-"Maharashtra": [
-"Mumbai",
-"Pune",
-"Nagpur"
-]
-
-};
-
-const mandalData = {
-
-"Hyderabad": [
-"Amberpet",
-"Asif Nagar",
-"Bahadurpura",
-"Charminar",
-"Khairatabad",
-"Musheerabad",
-"Nampally",
-"Shaikpet"
-],
-
-"Karimnagar": [
-"Choppadandi",
-"Gangadhara",
-"Huzurabad",
-"Karimnagar",
-"Manakondur"
-],
-
-"Khammam": [
-"Bonakal",
-"Khammam Rural",
-"Khammam Urban",
-"Kusumanchi",
-"Sathupalli",
-"Wyra"
-],
-
-"Nalgonda": [
-"Chandur",
-"Devarakonda",
-"Miryalaguda",
-"Munugode",
-"Nalgonda"
-],
-
-"Nizamabad": [
-"Armur",
-"Bodhan",
-"Dichpally",
-"Nizamabad North",
-"Nizamabad South"
-],
-
-"Warangal": [
-"Atmakur",
-"Duggondi",
-"Narsampet",
-"Parvathagiri",
-"Warangal"
-],
-
-"Visakhapatnam": [
-"Gajuwaka",
-"MVP Colony"
-],
-
-"Chennai": [
-"T Nagar",
-"Velachery"
-],
-
-"Bangalore": [
-"Whitefield",
-"Indiranagar"
-]
-
-};
-
-function loadDistricts(){
-
-let state = document.getElementById("state").value;
-
-let district = document.getElementById("district");
-
-district.innerHTML = '<option value="">Select District</option>';
-
-document.getElementById("mandal").innerHTML =
-'<option value="">Select Mandal</option>';
-
-if(districtData[state]){
-
-districtData[state].forEach(function(item){
-
-district.innerHTML += `
-<option value="${item}">
-${item}
-</option>
-`;
-
-});
-
-}
-
-}
-
-function loadMandals(){
-
-let district = document.getElementById("district").value;
-
-let mandal = document.getElementById("mandal");
-
-mandal.innerHTML = '<option value="">Select Mandal</option>';
-
-if(mandalData[district]){
-
-mandalData[district].forEach(function(item){
-
-mandal.innerHTML += `
-<option value="${item}">
-${item}
-</option>
-`;
-
-});
-
-}
-
-}
-
-</script>
 
 </body>
 </html>
