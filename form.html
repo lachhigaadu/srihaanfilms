@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Movie Audition Application Form</title>
 
 <style>
@@ -17,33 +18,40 @@
 body{
     background:#0f0f0f;
     color:white;
-    padding:40px 20px;
+    padding:40px 15px;
 }
 
 .container{
-    max-width:900px;
+    max-width:1000px;
     margin:auto;
     background:#1a1a1a;
     padding:40px;
     border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.5);
 }
 
 h1{
     text-align:center;
-    margin-bottom:30px;
     color:#ff9059;
+    margin-bottom:35px;
     font-size:40px;
 }
 
 h2{
-    margin:30px 0 20px;
     color:#ff9059;
+    margin:35px 0 20px;
     border-bottom:1px solid #333;
     padding-bottom:10px;
 }
 
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
 .input-box{
-    margin-bottom:18px;
+    margin-bottom:20px;
 }
 
 label{
@@ -65,30 +73,21 @@ select{
 }
 
 textarea{
-    resize:none;
     height:120px;
+    resize:none;
 }
 
-.row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+input:focus,
+textarea:focus,
+select:focus{
+    outline:none;
+    border:2px solid #ff9059;
 }
 
-button{
-    width:100%;
-    padding:16px;
-    border:none;
-    border-radius:10px;
-    background:#ff9059;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-    margin-top:30px;
-}
-
-button:hover{
-    opacity:0.9;
+.file-note{
+    font-size:13px;
+    color:#999;
+    margin-top:5px;
 }
 
 .checkbox{
@@ -102,6 +101,29 @@ button:hover{
     width:auto;
 }
 
+.warning{
+    color:#ff9059;
+    margin-top:20px;
+    font-size:14px;
+}
+
+button{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:10px;
+    background:#ff9059;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    margin-top:30px;
+    transition:0.3s;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
 @media(max-width:768px){
 
 .row{
@@ -112,10 +134,15 @@ button:hover{
     padding:20px;
 }
 
+h1{
+    font-size:28px;
 }
- 
+
+}
+
 </style>
 </head>
+
 <body>
 
 <div class="container">
@@ -124,7 +151,11 @@ button:hover{
 
 <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
 
+<!-- WEB3FORMS ACCESS KEY -->
+
 <input type="hidden" name="access_key" value="75fba7b6-743f-4c2d-8346-f4f0a4e94e41">
+
+<!-- THANK YOU PAGE -->
 
 <input type="hidden" name="redirect" value="https://www.srihaanfilms.com/thankyou.html">
 
@@ -135,67 +166,128 @@ button:hover{
 <div class="row">
 
 <div class="input-box">
-<label>Full Name</label>
-<input type="text" name="Full Name" required>
+<label>Full Name *</label>
+<input type="text" name="Full Name" placeholder="Enter Full Name" required minlength="3" maxlength="50">
 </div>
 
 <div class="input-box">
 <label>Stage Name</label>
-<input type="text" name="Stage Name">
+<input type="text" name="Stage Name" placeholder="Enter Stage Name">
 </div>
 
 <div class="input-box">
-<label>Date of Birth</label>
-<input type="date" name="Date of Birth">
+<label>Date of Birth *</label>
+<input type="date" name="Date of Birth" required>
 </div>
 
 <div class="input-box">
-<label>Age</label>
-<input type="number" name="Age">
+<label>Age *</label>
+<input type="number" name="Age" placeholder="Enter Age" required min="1" max="100">
 </div>
 
 <div class="input-box">
-<label>Gender</label>
-<select name="Gender">
+<label>Gender *</label>
+
+<select name="Gender" required>
+<option value="">Select Gender</option>
 <option>Male</option>
 <option>Female</option>
 <option>Other</option>
 </select>
-</div>
-
-<div class="input-box">
-<label>Mobile Number</label>
-<input type="tel" name="Mobile Number" required>
-</div>
-
-<div class="input-box">
-<label>WhatsApp Number</label>
-<input type="tel" name="WhatsApp Number">
-</div>
-
-<div class="input-box">
-<label>Email Address</label>
-<input type="email" name="Email Address" required>
-</div>
 
 </div>
 
 <div class="input-box">
-<label>Current Address</label>
-<textarea name="Current Address"></textarea>
+<label>Mobile Number *</label>
+
+<input 
+type="tel" 
+name="Mobile Number"
+placeholder="Enter 10 Digit Mobile Number"
+required
+pattern="[0-9]{10}"
+title="Enter valid 10 digit mobile number">
+
 </div>
+
+<div class="input-box">
+<label>WhatsApp Number *</label>
+
+<input 
+type="tel" 
+name="WhatsApp Number"
+placeholder="Enter 10 Digit WhatsApp Number"
+required
+pattern="[0-9]{10}"
+title="Enter valid 10 digit WhatsApp number">
+
+</div>
+
+<div class="input-box">
+<label>Email Address *</label>
+
+<input 
+type="email" 
+name="Email Address"
+placeholder="Enter Email Address"
+required>
+
+</div>
+
+</div>
+
+<div class="input-box">
+<label>Current Address *</label>
+<textarea name="Current Address" placeholder="Enter Current Address" required></textarea>
+</div>
+
+<!-- LOCATION -->
+
+<h2>Location Details</h2>
 
 <div class="row">
 
 <div class="input-box">
-<label>City / State</label>
-<input type="text" name="City State">
+
+<label>Select State *</label>
+
+<select id="state" name="State" required onchange="loadDistricts()">
+
+<option value="">Select State</option>
+
+<option value="Andhra Pradesh">Andhra Pradesh</option>
+<option value="Telangana">Telangana</option>
+<option value="Tamil Nadu">Tamil Nadu</option>
+<option value="Karnataka">Karnataka</option>
+<option value="Maharashtra">Maharashtra</option>
+
+</select>
+
 </div>
 
 <div class="input-box">
-<label>Nationality</label>
-<input type="text" name="Nationality">
+
+<label>Select District *</label>
+
+<select id="district" name="District" required onchange="loadCities()">
+
+<option value="">Select District</option>
+
+</select>
+
 </div>
+
+</div>
+
+<div class="input-box">
+
+<label>Select City *</label>
+
+<select id="city" name="City" required>
+
+<option value="">Select City</option>
+
+</select>
 
 </div>
 
@@ -206,33 +298,33 @@ button:hover{
 <div class="row">
 
 <div class="input-box">
-<label>Height</label>
-<input type="text" name="Height">
+<label>Height *</label>
+<input type="text" name="Height" placeholder="Example: 5.8 ft" required>
 </div>
 
 <div class="input-box">
-<label>Weight</label>
-<input type="text" name="Weight">
+<label>Weight *</label>
+<input type="text" name="Weight" placeholder="Example: 70 Kg" required>
 </div>
 
 <div class="input-box">
 <label>Skin Tone</label>
-<input type="text" name="Skin Tone">
+<input type="text" name="Skin Tone" placeholder="Enter Skin Tone">
 </div>
 
 <div class="input-box">
 <label>Hair Color</label>
-<input type="text" name="Hair Color">
+<input type="text" name="Hair Color" placeholder="Enter Hair Color">
 </div>
 
 <div class="input-box">
 <label>Eye Color</label>
-<input type="text" name="Eye Color">
+<input type="text" name="Eye Color" placeholder="Enter Eye Color">
 </div>
 
 <div class="input-box">
 <label>Body Type</label>
-<input type="text" name="Body Type">
+<input type="text" name="Body Type" placeholder="Enter Body Type">
 </div>
 
 </div>
@@ -244,48 +336,33 @@ button:hover{
 <div class="row">
 
 <div class="input-box">
-<label>Acting Experience</label>
-<input type="text" name="Acting Experience">
+<label>Acting Experience *</label>
+<input type="text" name="Acting Experience" placeholder="Acting Experience" required>
 </div>
 
 <div class="input-box">
-<label>Theatre Experience</label>
-<input type="text" name="Theatre Experience">
-</div>
-
-<div class="input-box">
-<label>Short Films Experience</label>
-<input type="text" name="Short Films Experience">
-</div>
-
-<div class="input-box">
-<label>Feature Film Experience</label>
-<input type="text" name="Feature Film Experience">
-</div>
-
-<div class="input-box">
-<label>Web Series Experience</label>
-<input type="text" name="Web Series Experience">
-</div>
-
-<div class="input-box">
-<label>Languages Known</label>
-<input type="text" name="Languages Known">
+<label>Languages Known *</label>
+<input type="text" name="Languages Known" placeholder="Languages Known" required>
 </div>
 
 <div class="input-box">
 <label>Dancing Skills</label>
-<input type="text" name="Dancing Skills">
+<input type="text" name="Dancing Skills" placeholder="Dancing Skills">
 </div>
 
 <div class="input-box">
 <label>Singing Skills</label>
-<input type="text" name="Singing Skills">
+<input type="text" name="Singing Skills" placeholder="Singing Skills">
 </div>
 
 <div class="input-box">
-<label>Fighting / Action Skills</label>
-<input type="text" name="Action Skills">
+<label>Action Skills</label>
+<input type="text" name="Action Skills" placeholder="Action Skills">
+</div>
+
+<div class="input-box">
+<label>Applying For Role *</label>
+<input type="text" name="Applying For Role" placeholder="Applying For Role" required>
 </div>
 
 </div>
@@ -297,56 +374,45 @@ button:hover{
 <div class="row">
 
 <div class="input-box">
-<label>Instagram Profile</label>
-<input type="url" name="Instagram">
-</div>
-
-<div class="input-box">
-<label>Facebook Profile</label>
-<input type="url" name="Facebook">
+<label>Instagram Profile *</label>
+<input type="url" name="Instagram" placeholder="Instagram Profile Link" required>
 </div>
 
 <div class="input-box">
 <label>YouTube Channel</label>
-<input type="url" name="YouTube">
-</div>
-
-<div class="input-box">
-<label>Twitter / X Profile</label>
-<input type="url" name="Twitter">
+<input type="url" name="YouTube" placeholder="YouTube Channel Link">
 </div>
 
 </div>
 
 <!-- PORTFOLIO -->
 
-<h2>Portfolio Details</h2>
+<h2>Portfolio Uploads</h2>
 
 <div class="row">
 
 <div class="input-box">
-<label>Upload Headshot</label>
-<input type="file" name="Headshot">
+<label>Upload Headshot *</label>
+<input type="file" name="Headshot" required accept="image/*">
+<p class="file-note">Upload JPG / PNG Image</p>
 </div>
 
 <div class="input-box">
-<label>Upload Full Size Photo</label>
-<input type="file" name="Full Size Photo">
+<label>Upload Full Size Photo *</label>
+<input type="file" name="Full Size Photo" required accept="image/*">
+<p class="file-note">Upload JPG / PNG Image</p>
 </div>
 
 <div class="input-box">
-<label>Upload Introduction Video</label>
-<input type="file" name="Introduction Video">
+<label>Upload Introduction Video *</label>
+<input type="file" name="Introduction Video" required accept="video/*">
+<p class="file-note">Upload MP4 Video</p>
 </div>
 
 <div class="input-box">
-<label>Upload Acting Reel</label>
-<input type="file" name="Acting Reel">
-</div>
-
-<div class="input-box">
-<label>Resume / Portfolio PDF</label>
-<input type="file" name="Resume PDF">
+<label>Resume / Portfolio PDF *</label>
+<input type="file" name="Resume PDF" required accept=".pdf">
+<p class="file-note">Upload PDF File</p>
 </div>
 
 </div>
@@ -358,31 +424,20 @@ button:hover{
 <div class="row">
 
 <div class="input-box">
-<label>Applying For Role</label>
-<input type="text" name="Applying For Role">
+<label>Current Location *</label>
+<input type="text" name="Current Location" placeholder="Current Location" required>
 </div>
 
 <div class="input-box">
-<label>Preferred Language</label>
-<input type="text" name="Preferred Language">
-</div>
 
-<div class="input-box">
-<label>Available Dates</label>
-<input type="text" name="Available Dates">
-</div>
+<label>Ready To Travel? *</label>
 
-<div class="input-box">
-<label>Current Location</label>
-<input type="text" name="Current Location">
-</div>
-
-<div class="input-box">
-<label>Ready To Travel?</label>
-<select name="Ready To Travel">
+<select name="Ready To Travel" required>
+<option value="">Select Option</option>
 <option>Yes</option>
 <option>No</option>
 </select>
+
 </div>
 
 </div>
@@ -393,22 +448,12 @@ button:hover{
 
 <div class="checkbox">
 <input type="checkbox" required>
-<label>I confirm all details are true.</label>
+<label>I confirm all details are true and valid.</label>
 </div>
 
-<div class="row">
-
-<div class="input-box">
-<label>Signature</label>
-<input type="text" name="Signature">
-</div>
-
-<div class="input-box">
-<label>Date</label>
-<input type="date" name="Date">
-</div>
-
-</div>
+<p class="warning">
+* Please fill all compulsory fields before submitting.
+</p>
 
 <button type="submit">
 Submit Application
@@ -417,6 +462,118 @@ Submit Application
 </form>
 
 </div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+const districtData = {
+
+"Telangana": [
+"Hyderabad",
+"Warangal",
+"Karimnagar",
+"Nizamabad",
+"Khammam"
+],
+
+"Andhra Pradesh": [
+"Visakhapatnam",
+"Vijayawada",
+"Guntur",
+"Nellore"
+],
+
+"Tamil Nadu": [
+"Chennai",
+"Coimbatore",
+"Madurai"
+],
+
+"Karnataka": [
+"Bangalore",
+"Mysore"
+],
+
+"Maharashtra": [
+"Mumbai",
+"Pune",
+"Nagpur"
+]
+
+};
+
+const cityData = {
+
+"Hyderabad": [
+"Gachibowli",
+"Kukatpally",
+"Madhapur"
+],
+
+"Warangal": [
+"Hanamkonda",
+"Kazipet"
+],
+
+"Visakhapatnam": [
+"Gajuwaka",
+"MVP Colony"
+],
+
+"Chennai": [
+"T Nagar",
+"Velachery"
+],
+
+"Bangalore": [
+"Whitefield",
+"Indiranagar"
+]
+
+};
+
+function loadDistricts(){
+
+let state = document.getElementById("state").value;
+
+let district = document.getElementById("district");
+
+district.innerHTML = '<option value="">Select District</option>';
+
+if(districtData[state]){
+
+districtData[state].forEach(function(item){
+
+district.innerHTML += `<option value="${item}">${item}</option>`;
+
+});
+
+}
+
+}
+
+function loadCities(){
+
+let district = document.getElementById("district").value;
+
+let city = document.getElementById("city");
+
+city.innerHTML = '<option value="">Select City</option>';
+
+if(cityData[district]){
+
+cityData[district].forEach(function(item){
+
+city.innerHTML += `<option value="${item}">${item}</option>`;
+
+});
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
