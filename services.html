@@ -1,0 +1,781 @@
+# SRIHAANFILMS — Services Page (HTML5 + CSS3 + Bootstrap + JavaScript)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | SRIHAANFILMS</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#000;
+      color:#fff;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    /* Scrollbar */
+
+    ::-webkit-scrollbar{
+      width:8px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:#fd8650;
+      border-radius:20px;
+    }
+
+    /* Navbar */
+
+    .navbar{
+      background:rgba(0,0,0,0.4);
+      backdrop-filter:blur(12px);
+      padding:18px 0;
+      transition:0.4s;
+      z-index:999;
+    }
+
+    .navbar-brand{
+      font-size:2rem;
+      font-weight:800;
+      color:#fff !important;
+    }
+
+    .orange{
+      color:#fd8650;
+    }
+
+    .nav-link{
+      color:#fff !important;
+      margin-left:12px;
+      transition:0.3s;
+      position:relative;
+    }
+
+    .nav-link::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-5px;
+      width:0%;
+      height:2px;
+      background:#fd8650;
+      transition:0.4s;
+    }
+
+    .nav-link:hover::after{
+      width:100%;
+    }
+
+    .nav-link:hover{
+      color:#fd8650 !important;
+    }
+
+    /* Hero */
+
+    .services-hero{
+      height:75vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+      url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2000&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .services-hero::before{
+      content:'';
+      position:absolute;
+      width:500px;
+      height:500px;
+      background:#fd8650;
+      filter:blur(180px);
+      opacity:0.15;
+      right:-100px;
+      top:-100px;
+      border-radius:50%;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-subtitle{
+      color:#fd8650;
+      letter-spacing:6px;
+      text-transform:uppercase;
+      margin-bottom:20px;
+      font-size:14px;
+    }
+
+    .services-hero h1{
+      font-size:5rem;
+      font-weight:800;
+      margin-bottom:20px;
+      line-height:1.1;
+    }
+
+    .services-hero p{
+      max-width:850px;
+      color:#d1d1d1;
+      line-height:2;
+      font-size:1.1rem;
+    }
+
+    /* Section */
+
+    .services-section{
+      padding:120px 0;
+    }
+
+    .section-subtitle{
+      color:#fd8650;
+      text-transform:uppercase;
+      letter-spacing:6px;
+      margin-bottom:20px;
+      font-size:14px;
+    }
+
+    .section-title{
+      font-size:4rem;
+      font-weight:700;
+      margin-bottom:60px;
+      line-height:1.2;
+    }
+
+    /* Service Card */
+
+    .service-card{
+      background:#111;
+      border-radius:35px;
+      padding:45px 35px;
+      border:1px solid rgba(255,255,255,0.06);
+      transition:0.5s;
+      height:100%;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .service-card::before{
+      content:'';
+      position:absolute;
+      width:150px;
+      height:150px;
+      background:#fd8650;
+      filter:blur(80px);
+      opacity:0;
+      right:-50px;
+      top:-50px;
+      transition:0.5s;
+    }
+
+    .service-card:hover::before{
+      opacity:0.15;
+    }
+
+    .service-card:hover{
+      transform:translateY(-12px);
+      border-color:#fd8650;
+      box-shadow:0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .service-icon{
+      width:90px;
+      height:90px;
+      background:rgba(253,134,80,0.12);
+      border-radius:25px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:30px;
+    }
+
+    .service-icon i{
+      font-size:2.8rem;
+      color:#fd8650;
+    }
+
+    .service-card h3{
+      font-size:2rem;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+
+    .service-card p{
+      color:#cfcfcf;
+      line-height:2;
+      margin-bottom:25px;
+    }
+
+    .service-list{
+      list-style:none;
+      padding:0;
+    }
+
+    .service-list li{
+      margin-bottom:12px;
+      color:#d1d1d1;
+    }
+
+    .service-list li i{
+      color:#fd8650;
+      margin-right:10px;
+    }
+
+    /* Process */
+
+    .process-section{
+      padding-bottom:120px;
+    }
+
+    .process-card{
+      background:#111;
+      border-radius:30px;
+      padding:50px 35px;
+      text-align:center;
+      border:1px solid rgba(255,255,255,0.06);
+      transition:0.4s;
+      height:100%;
+      position:relative;
+    }
+
+    .process-card:hover{
+      transform:translateY(-10px);
+      border-color:#fd8650;
+    }
+
+    .process-number{
+      width:70px;
+      height:70px;
+      background:#fd8650;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      font-size:2rem;
+      font-weight:700;
+      margin:auto;
+      margin-bottom:30px;
+    }
+
+    .process-card h4{
+      font-weight:700;
+      margin-bottom:20px;
+    }
+
+    .process-card p{
+      color:#cfcfcf;
+      line-height:1.9;
+    }
+
+    /* CTA */
+
+    .cta-section{
+      padding-bottom:120px;
+    }
+
+    .cta-box{
+      background:linear-gradient(135deg,#fd8650,#ff6b2d);
+      border-radius:35px;
+      padding:70px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .cta-box::before{
+      content:'';
+      position:absolute;
+      width:350px;
+      height:350px;
+      background:rgba(255,255,255,0.08);
+      border-radius:50%;
+      right:-100px;
+      top:-100px;
+    }
+
+    .cta-box h2{
+      font-size:3rem;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+
+    .cta-box p{
+      max-width:850px;
+      line-height:2;
+      font-size:1.1rem;
+    }
+
+    /* Footer */
+
+    .footer{
+      background:#050505;
+      border-top:1px solid rgba(255,255,255,0.08);
+      padding:40px 0;
+    }
+
+    .footer-links a{
+      color:#bbb;
+      text-decoration:none;
+      margin:0 12px;
+      transition:0.3s;
+    }
+
+    .footer-links a:hover{
+      color:#fd8650;
+    }
+
+    /* Responsive */
+
+    @media(max-width:991px){
+
+      .services-hero h1{
+        font-size:3.5rem;
+      }
+
+      .section-title{
+        font-size:2.8rem;
+      }
+
+      .cta-box{
+        padding:50px;
+      }
+
+      .cta-box h2{
+        font-size:2.2rem;
+      }
+
+    }
+
+    @media(max-width:768px){
+
+      .services-hero{
+        text-align:center;
+      }
+
+      .services-hero h1{
+        font-size:2.8rem;
+      }
+
+      .section-title{
+        font-size:2.2rem;
+      }
+
+      .service-card h3{
+        font-size:1.6rem;
+      }
+
+      .cta-box{
+        padding:35px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+
+    <a class="navbar-brand" href="index.html">
+      SRIHAAN<span class="orange">FILMS</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="founder.html">Founder</a></li>
+        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+        <li class="nav-item"><a class="nav-link active orange" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="auditions.html">Auditions</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+
+      </ul>
+
+    </div>
+
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="services-hero">
+  <div class="container hero-content">
+
+    <p class="hero-subtitle">
+      Creative Production Services
+    </p>
+
+    <h1>
+      WHAT WE
+      <span class="orange"> CREATE</span>
+    </h1>
+
+    <p>
+      SRIHAANFILMS provides cinematic filmmaking, visual storytelling, editing, cinematography, and digital content production services with creativity and passion.
+    </p>
+
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services-section">
+  <div class="container">
+
+    <div class="text-center mb-5">
+
+      <p class="section-subtitle">
+        Professional Services
+      </p>
+
+      <h2 class="section-title">
+        Complete Cinematic Solutions
+      </h2>
+
+    </div>
+
+    <div class="row g-5">
+
+      <!-- Film Production -->
+
+      <div class="col-lg-4 col-md-6">
+
+        <div class="service-card">
+
+          <div class="service-icon">
+            <i class="fa-solid fa-film"></i>
+          </div>
+
+          <h3>Film Production</h3>
+
+          <p>
+            Creating feature films and independent cinema with cinematic storytelling, creative direction, and professional execution.
+          </p>
+
+          <ul class="service-list">
+            <li><i class="fa-solid fa-check"></i> Feature Films</li>
+            <li><i class="fa-solid fa-check"></i> Independent Cinema</li>
+            <li><i class="fa-solid fa-check"></i> Creative Direction</li>
+            <li><i class="fa-solid fa-check"></i> Production Planning</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+      <!-- Web Series -->
+
+      <div class="col-lg-4 col-md-6">
+
+        <div class="service-card">
+
+          <div class="service-icon">
+            <i class="fa-solid fa-tv"></i>
+          </div>
+
+          <h3>Web Series</h3>
+
+          <p>
+            Producing cinematic web series and OTT-ready content with engaging storytelling and visual excellence.
+          </p>
+
+          <ul class="service-list">
+            <li><i class="fa-solid fa-check"></i> OTT Content</li>
+            <li><i class="fa-solid fa-check"></i> Episodic Storytelling</li>
+            <li><i class="fa-solid fa-check"></i> Cinematic Visuals</li>
+            <li><i class="fa-solid fa-check"></i> Creative Production</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+      <!-- Short Films -->
+
+      <div class="col-lg-4 col-md-6">
+
+        <div class="service-card">
+
+          <div class="service-icon">
+            <i class="fa-solid fa-video"></i>
+          </div>
+
+          <h3>Short Films</h3>
+
+          <p>
+            Independent short film production focused on meaningful storytelling and emotional cinematic experiences.
+          </p>
+
+          <ul class="service-list">
+            <li><i class="fa-solid fa-check"></i> Story Development</li>
+            <li><i class="fa-solid fa-check"></i> Creative Concepts</li>
+            <li><i class="fa-solid fa-check"></i> Cinematic Execution</li>
+            <li><i class="fa-solid fa-check"></i> Independent Projects</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+      <!-- Cinematography -->
+
+      <div class="col-lg-4 col-md-6">
+
+        <div class="service-card">
+
+          <div class="service-icon">
+            <i class="fa-solid fa-camera"></i>
+          </div>
+
+          <h3>Cinematography</h3>
+
+          <p>
+            Professional cinematic camera work, lighting design, visual framing, and storytelling through visuals.
+          </p>
+
+          <ul class="service-list">
+            <li><i class="fa-solid fa-check"></i> Camera Direction</li>
+            <li><i class="fa-solid fa-check"></i> Lighting Design</li>
+            <li><i class="fa-solid fa-check"></i> Visual Composition</li>
+            <li><i class="fa-solid fa-check"></i> Cinematic Framing</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+      <!-- Editing -->
+
+      <div class="col-lg-4 col-md-6">
+
+        <div class="service-card">
+
+          <div class="service-icon">
+            <i class="fa-solid fa-scissors"></i>
+          </div>
+
+          <h3>Video Editing</h3>
+
+          <p>
+            Creative editing and post-production services for films, web series, documentaries, and digital content.
+          </p>
+
+          <ul class="service-list">
+            <li><i class="fa-solid fa-check"></i> Film Editing</li>
+            <li><i class="fa-solid fa-check"></i> Color Grading</li>
+            <li><i class="fa-solid fa-check"></i> Sound Sync</li>
+            <li><i class="fa-solid fa-check"></i> Post Production</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+      <!-- Photography -->
+
+      <div class="col-lg-4 col-md-6">
+
+        <div class="service-card">
+
+          <div class="service-icon">
+            <i class="fa-solid fa-camera-retro"></i>
+          </div>
+
+          <h3>Photography</h3>
+
+          <p>
+            Professional photography services for weddings, cultural events, portraits, and creative outdoor shoots.
+          </p>
+
+          <ul class="service-list">
+            <li><i class="fa-solid fa-check"></i> Event Photography</li>
+            <li><i class="fa-solid fa-check"></i> Outdoor Shoots</li>
+            <li><i class="fa-solid fa-check"></i> Portrait Photography</li>
+            <li><i class="fa-solid fa-check"></i> Creative Visuals</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Process -->
+<section class="process-section">
+  <div class="container">
+
+    <div class="text-center mb-5">
+
+      <p class="section-subtitle">
+        Our Process
+      </p>
+
+      <h2 class="section-title">
+        How We Create Cinema
+      </h2>
+
+    </div>
+
+    <div class="row g-5">
+
+      <div class="col-lg-3 col-md-6">
+        <div class="process-card">
+          <div class="process-number">1</div>
+          <h4>Concept</h4>
+          <p>
+            Developing unique ideas, creative concepts, and storytelling vision.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="process-card">
+          <div class="process-number">2</div>
+          <h4>Planning</h4>
+          <p>
+            Pre-production planning, screenplay development, and visual preparation.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="process-card">
+          <div class="process-number">3</div>
+          <h4>Production</h4>
+          <p>
+            Cinematic filming with professional direction, camera work, and creativity.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="process-card">
+          <div class="process-number">4</div>
+          <h4>Post Production</h4>
+          <p>
+            Editing, color grading, sound design, and final cinematic finishing.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+
+    <div class="cta-box">
+
+      <h2>
+        Let’s Create Something Cinematic Together 🎬
+      </h2>
+
+      <p>
+        Whether it’s Films, Web Series, Short Films, Cinematography, Editing, or Photography — SRIHAANFILMS is ready to bring your creative vision to life.
+      </p>
+
+      <button class="btn btn-light px-5 py-3 rounded-4 fw-semibold mt-4">
+        Contact Us
+      </button>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer text-center">
+  <div class="container">
+
+    <h2 class="fw-bold mb-3">
+      SRIHAAN<span class="orange">FILMS</span>
+    </h2>
+
+    <p class="text-secondary mb-4">
+      Storytelling Through Cinema ✨
+    </p>
+
+    <div class="footer-links">
+
+      <a href="#">Instagram</a>
+      <a href="#">YouTube</a>
+      <a href="#">Facebook</a>
+      <a href="#">X (Twitter)</a>
+      <a href="#">Threads</a>
+
+    </div>
+
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Navbar Scroll -->
+<script>
+
+  window.addEventListener('scroll', function(){
+
+    const navbar = document.querySelector('.navbar');
+
+    if(window.scrollY > 50){
+      navbar.style.background = '#000';
+      navbar.style.boxShadow = '0 10px 30px rgba(0,0,0,0.4)';
+    }
+
+    else{
+      navbar.style.background = 'rgba(0,0,0,0.4)';
+      navbar.style.boxShadow = 'none';
+    }
+
+  });
+
+</script>
+
+</body>
+</html>
+```

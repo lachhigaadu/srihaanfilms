@@ -1,0 +1,748 @@
+# SRIHAANFILMS — Team Page (HTML5 + CSS3 + Bootstrap + JavaScript)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team | SRIHAANFILMS</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#000;
+      color:#fff;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    /* Scrollbar */
+
+    ::-webkit-scrollbar{
+      width:8px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:#fd8650;
+      border-radius:20px;
+    }
+
+    /* Navbar */
+
+    .navbar{
+      background:rgba(0,0,0,0.4);
+      backdrop-filter:blur(12px);
+      padding:18px 0;
+      transition:0.4s;
+      z-index:999;
+    }
+
+    .navbar-brand{
+      font-size:2rem;
+      font-weight:800;
+      color:#fff !important;
+    }
+
+    .orange{
+      color:#fd8650;
+    }
+
+    .nav-link{
+      color:#fff !important;
+      margin-left:12px;
+      transition:0.3s;
+      position:relative;
+    }
+
+    .nav-link::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-5px;
+      width:0%;
+      height:2px;
+      background:#fd8650;
+      transition:0.4s;
+    }
+
+    .nav-link:hover::after{
+      width:100%;
+    }
+
+    .nav-link:hover{
+      color:#fd8650 !important;
+    }
+
+    /* Hero */
+
+    .team-hero{
+      height:75vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+      url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2000&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .team-hero::before{
+      content:'';
+      position:absolute;
+      width:500px;
+      height:500px;
+      background:#fd8650;
+      filter:blur(180px);
+      opacity:0.15;
+      right:-100px;
+      top:-100px;
+      border-radius:50%;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-subtitle{
+      color:#fd8650;
+      letter-spacing:6px;
+      text-transform:uppercase;
+      margin-bottom:20px;
+      font-size:14px;
+    }
+
+    .team-hero h1{
+      font-size:5rem;
+      font-weight:800;
+      margin-bottom:20px;
+      line-height:1.1;
+    }
+
+    .team-hero p{
+      max-width:800px;
+      color:#d1d1d1;
+      line-height:2;
+      font-size:1.1rem;
+    }
+
+    /* Team Section */
+
+    .team-section{
+      padding:120px 0;
+    }
+
+    .section-subtitle{
+      color:#fd8650;
+      text-transform:uppercase;
+      letter-spacing:6px;
+      margin-bottom:20px;
+      font-size:14px;
+    }
+
+    .section-title{
+      font-size:4rem;
+      font-weight:700;
+      margin-bottom:60px;
+      line-height:1.2;
+    }
+
+    .team-card{
+      background:#111;
+      border-radius:35px;
+      overflow:hidden;
+      transition:0.5s;
+      border:1px solid rgba(255,255,255,0.06);
+      position:relative;
+      height:100%;
+    }
+
+    .team-card:hover{
+      transform:translateY(-12px);
+      border-color:#fd8650;
+      box-shadow:0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .team-image{
+      position:relative;
+      overflow:hidden;
+    }
+
+    .team-image img{
+      width:100%;
+      height:420px;
+      object-fit:cover;
+      transition:0.6s;
+    }
+
+    .team-card:hover img{
+      transform:scale(1.08);
+    }
+
+    .team-social{
+      position:absolute;
+      bottom:20px;
+      left:50%;
+      transform:translateX(-50%);
+      display:flex;
+      gap:10px;
+      opacity:0;
+      transition:0.4s;
+    }
+
+    .team-card:hover .team-social{
+      opacity:1;
+      bottom:30px;
+    }
+
+    .team-social a{
+      width:45px;
+      height:45px;
+      background:#fd8650;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      text-decoration:none;
+      transition:0.3s;
+    }
+
+    .team-social a:hover{
+      background:#fff;
+      color:#000;
+    }
+
+    .team-content{
+      padding:35px;
+      text-align:center;
+    }
+
+    .team-content h3{
+      font-size:2rem;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    .team-role{
+      color:#fd8650;
+      font-size:15px;
+      margin-bottom:20px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .team-content p{
+      color:#cfcfcf;
+      line-height:1.9;
+    }
+
+    /* Creative Section */
+
+    .creative-section{
+      padding-bottom:120px;
+    }
+
+    .creative-box{
+      background:linear-gradient(135deg,#fd8650,#ff6b2d);
+      border-radius:35px;
+      padding:70px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .creative-box::before{
+      content:'';
+      position:absolute;
+      width:350px;
+      height:350px;
+      background:rgba(255,255,255,0.08);
+      border-radius:50%;
+      right:-100px;
+      top:-100px;
+    }
+
+    .creative-box h2{
+      font-size:3rem;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+
+    .creative-box p{
+      max-width:850px;
+      line-height:2;
+      font-size:1.1rem;
+    }
+
+    /* Footer */
+
+    .footer{
+      background:#050505;
+      border-top:1px solid rgba(255,255,255,0.08);
+      padding:40px 0;
+    }
+
+    .footer-links a{
+      color:#bbb;
+      text-decoration:none;
+      margin:0 12px;
+      transition:0.3s;
+    }
+
+    .footer-links a:hover{
+      color:#fd8650;
+    }
+
+    /* Responsive */
+
+    @media(max-width:991px){
+
+      .team-hero h1{
+        font-size:3.5rem;
+      }
+
+      .section-title{
+        font-size:2.8rem;
+      }
+
+      .creative-box{
+        padding:50px;
+      }
+
+      .creative-box h2{
+        font-size:2.2rem;
+      }
+
+    }
+
+    @media(max-width:768px){
+
+      .team-hero{
+        text-align:center;
+      }
+
+      .team-hero h1{
+        font-size:2.8rem;
+      }
+
+      .section-title{
+        font-size:2.2rem;
+      }
+
+      .team-content h3{
+        font-size:1.6rem;
+      }
+
+      .creative-box{
+        padding:35px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+
+    <a class="navbar-brand" href="index.html">
+      SRIHAAN<span class="orange">FILMS</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="founder.html">Founder</a></li>
+        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+        <li class="nav-item"><a class="nav-link active orange" href="team.html">Team</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="auditions.html">Auditions</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+
+      </ul>
+
+    </div>
+
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="team-hero">
+  <div class="container hero-content">
+
+    <p class="hero-subtitle">
+      Creative Team
+    </p>
+
+    <h1>
+      PEOPLE BEHIND
+      <span class="orange"> THE CINEMA</span>
+    </h1>
+
+    <p>
+      Meet the passionate creative artists, filmmakers, cinematographers, editors, and storytellers who bring cinematic visions to life at SRIHAANFILMS.
+    </p>
+
+  </div>
+</section>
+
+<!-- Team -->
+<section class="team-section">
+  <div class="container">
+
+    <div class="text-center mb-5">
+
+      <p class="section-subtitle">
+        Our Creative Family
+      </p>
+
+      <h2 class="section-title">
+        Dedicated Team Members
+      </h2>
+
+    </div>
+
+    <div class="row g-5">
+
+      <!-- Founder -->
+
+      <div class="col-lg-4 col-md-6">
+
+        <div class="team-card">
+
+          <div class="team-image">
+
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="team-social">
+
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-x-twitter"></i></a>
+
+            </div>
+
+          </div>
+
+          <div class="team-content">
+
+            <h3>CHANDRASHEKAR GIDDALAMARI</h3>
+
+            <div class="team-role">
+              Founder & CEO
+            </div>
+
+            <p>
+              Passionate filmmaker, cinematographer, editor, producer, and photographer leading SRIHAANFILMS with cinematic vision and creativity.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Director -->
+
+      <div class="col-lg-4 col-md-6">
+
+        <div class="team-card">
+
+          <div class="team-image">
+
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="team-social">
+
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-x-twitter"></i></a>
+
+            </div>
+
+          </div>
+
+          <div class="team-content">
+
+            <h3>Creative Director</h3>
+
+            <div class="team-role">
+              Story Development
+            </div>
+
+            <p>
+              Responsible for developing cinematic concepts, storytelling ideas, and visual direction for creative productions.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Cinematography -->
+
+      <div class="col-lg-4 col-md-6">
+
+        <div class="team-card">
+
+          <div class="team-image">
+
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="team-social">
+
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-x-twitter"></i></a>
+
+            </div>
+
+          </div>
+
+          <div class="team-content">
+
+            <h3>Cinematography Team</h3>
+
+            <div class="team-role">
+              Visual Storytelling
+            </div>
+
+            <p>
+              Capturing cinematic visuals with professional camera work, lighting, and emotional compositions.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Editing -->
+
+      <div class="col-lg-4 col-md-6">
+
+        <div class="team-card">
+
+          <div class="team-image">
+
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="team-social">
+
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-x-twitter"></i></a>
+
+            </div>
+
+          </div>
+
+          <div class="team-content">
+
+            <h3>Editing Team</h3>
+
+            <div class="team-role">
+              Post Production
+            </div>
+
+            <p>
+              Bringing stories together through cinematic editing, color grading, and creative post-production work.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Writers -->
+
+      <div class="col-lg-4 col-md-6">
+
+        <div class="team-card">
+
+          <div class="team-image">
+
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="team-social">
+
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-x-twitter"></i></a>
+
+            </div>
+
+          </div>
+
+          <div class="team-content">
+
+            <h3>Writers Team</h3>
+
+            <div class="team-role">
+              Screenplay & Dialogues
+            </div>
+
+            <p>
+              Creating original stories, screenplay structures, dialogues, and emotional cinematic narratives.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Production -->
+
+      <div class="col-lg-4 col-md-6">
+
+        <div class="team-card">
+
+          <div class="team-image">
+
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="team-social">
+
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-x-twitter"></i></a>
+
+            </div>
+
+          </div>
+
+          <div class="team-content">
+
+            <h3>Production Team</h3>
+
+            <div class="team-role">
+              Film Production
+            </div>
+
+            <p>
+              Managing film shoots, production planning, location coordination, and creative execution.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Creative Banner -->
+<section class="creative-section">
+  <div class="container">
+
+    <div class="creative-box">
+
+      <h2>
+        Together We Create Meaningful Cinema 🎬
+      </h2>
+
+      <p>
+        At SRIHAANFILMS, every team member contributes passion, creativity, and dedication toward building cinematic experiences that inspire audiences emotionally and visually.
+      </p>
+
+      <button class="btn btn-light px-5 py-3 rounded-4 fw-semibold mt-4">
+        Join Our Team
+      </button>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer text-center">
+  <div class="container">
+
+    <h2 class="fw-bold mb-3">
+      SRIHAAN<span class="orange">FILMS</span>
+    </h2>
+
+    <p class="text-secondary mb-4">
+      Storytelling Through Cinema ✨
+    </p>
+
+    <div class="footer-links">
+
+      <a href="#">Instagram</a>
+      <a href="#">YouTube</a>
+      <a href="#">Facebook</a>
+      <a href="#">X (Twitter)</a>
+      <a href="#">Threads</a>
+
+    </div>
+
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Navbar Scroll -->
+<script>
+
+  window.addEventListener('scroll', function(){
+
+    const navbar = document.querySelector('.navbar');
+
+    if(window.scrollY > 50){
+      navbar.style.background = '#000';
+      navbar.style.boxShadow = '0 10px 30px rgba(0,0,0,0.4)';
+    }
+
+    else{
+      navbar.style.background = 'rgba(0,0,0,0.4)';
+      navbar.style.boxShadow = 'none';
+    }
+
+  });
+
+</script>
+
+</body>
+</html>
+```
