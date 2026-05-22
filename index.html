@@ -1,373 +1,682 @@
-# Advanced Cinematic Home Page — SRIHAANFILMS
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SRIHAANFILMS</title>
-<link rel="icon" type="image/png" href="/logo.png">
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins', sans-serif;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      background:#000;
-      color:#fff;
-      overflow-x:hidden;
-    }
-
-    /* Scrollbar */
-
-    ::-webkit-scrollbar{
-      width:8px;
-    }
-
-    ::-webkit-scrollbar-thumb{
-      background:#fd8650;
-      border-radius:20px;
-    }
-
-    /* Navbar */
-
-    .navbar{
-      padding:18px 0;
-      background:rgba(0,0,0,0.4);
-      backdrop-filter:blur(12px);
-      transition:0.4s;
-      z-index:999;
-    }
-
-    .navbar-brand{
-      font-size:2rem;
-      font-weight:800;
-      letter-spacing:1px;
-      color:#fff !important;
-    }
-
-    .orange{
-      color:#fd8650;
-    }
-
-    .nav-link{
-      color:#fff !important;
-      margin-left:12px;
-      position:relative;
-      transition:0.3s;
-      font-weight:500;
-    }
-
-    .nav-link::after{
-      content:'';
-      position:absolute;
-      width:0%;
-      height:2px;
-      background:#fd8650;
-      left:0;
-      bottom:-5px;
-      transition:0.4s;
-    }
-
-    .nav-link:hover::after{
-      width:100%;
-    }
-
-    .nav-link:hover{
-      color:#fd8650 !important;
-    }
-
-    /* Hero */
-
-    .hero{
-      height:100vh;
-      position:relative;
-      display:flex;
-      align-items:center;
-      background:
-      linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.8)),
-      url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2000&auto=format&fit=crop');
-      background-size:cover;
-      background-position:center;
-      overflow:hidden;
-    }
-
-    .hero::before{
-      content:'';
-      position:absolute;
-      width:600px;
-      height:600px;
-      background:#fd8650;
-      filter:blur(180px);
-      opacity:0.18;
-      top:-150px;
-      right:-150px;
-      border-radius:50%;
-    }
-
-    .hero-content{
-      position:relative;
-      z-index:2;
-    }
-
-    .hero-subtitle{
-      letter-spacing:8px;
-      text-transform:uppercase;
-      color:#fd8650;
-      margin-bottom:20px;
-      font-size:14px;
-    }
-
-    .hero h1{
-      font-size:7rem;
-      font-weight:800;
-      line-height:1;
-      margin-bottom:30px;
-    }
-
-    .hero p{
-      max-width:850px;
-      color:black;
-      font-size:1.2rem;
-      line-height:2;
-    }
-
-    .btn-orange{
-      background:#fd8650;
-      color:#fff;
-      padding:16px 40px;
-      border:none;
-      border-radius:15px;
-      font-weight:600;
-      transition:0.4s;
-      box-shadow:0 10px 30px rgba(253,134,80,0.3);
-    }
-
-    .btn-orange:hover{
-      transform:translateY(-5px);
-      background:#ff6b2d;
-    }
-
-    .btn-dark-outline{
-      border:1px solid rgba(255,255,255,0.2);
-      color:#fff;
-      padding:16px 40px;
-      border-radius:15px;
-      transition:0.4s;
-    }
-
-    .btn-dark-outline:hover{
-      background:#fff;
-      color:#000;
-    }
-
-    /* Social */
-
-    .social-links{
-      margin-top:40px;
-    }
-
-    .social-links a{
-      width:55px;
-      height:55px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      border:1px solid rgba(255,255,255,0.1);
-      border-radius:50%;
-      color:#fff;
-      text-decoration:none;
-      margin-right:12px;
-      transition:0.4s;
-      font-size:18px;
-      background:rgba(255,255,255,0.05);
-    }
-
-    .social-links a:hover{
-      background:#fd8650;
-      transform:translateY(-5px);
-    }
-
-    /* Banner */
-
-    .casting-banner{
-      margin-top:60px;
-      background:linear-gradient(135deg,#fd8650,#ff6b2d);
-      padding:40px;
-      border-radius:30px;
-      position:relative;
-      overflow:hidden;
-      box-shadow:0 15px 40px rgba(253,134,80,0.3);
-    }
-
-    .casting-banner::before{
-      content:'';
-      position:absolute;
-      width:300px;
-      height:300px;
-      background:rgba(255,255,255,0.1);
-      border-radius:50%;
-      right:-100px;
-      top:-100px;
-    }
-
-    .casting-banner h2{
-      font-weight:700;
-    }
-
-    /* Floating Stats */
-
-    .stats-section{
-      margin-top:-80px;
-      position:relative;
-      z-index:3;
-    }
-
-    .stat-card{
-      background:#111;
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:25px;
-      padding:40px 20px;
-      text-align:center;
-      transition:0.4s;
-      backdrop-filter:blur(10px);
-    }
-
-    .stat-card:hover{
-      transform:translateY(-10px);
-      border-color:#fd8650;
-    }
-
-    .stat-card h2{
-      font-size:3rem;
-      font-weight:700;
-      color:#fd8650;
-    }
-
-    /* Featured */
-
-    .featured-section{
-      padding:120px 0;
-    }
-
-    .section-subtitle{
-      color:#fd8650;
-      letter-spacing:6px;
-      text-transform:uppercase;
-      margin-bottom:20px;
-      font-size:14px;
-    }
-
-    .section-title{
-      font-size:4rem;
-      font-weight:700;
-      margin-bottom:60px;
-    }
-
-    .movie-card{
-      background:#111;
-      border-radius:25px;
-      overflow:hidden;
-      transition:0.5s;
-      border:1px solid rgba(255,255,255,0.05);
-    }
-
-    .movie-card:hover{
-      transform:translateY(-12px);
-      border-color:#fd8650;
-    }
-
-    .movie-card img{
-      width:100%;
-      height:450px;
-      object-fit:cover;
-    }
-
-    .movie-content{
-      padding:30px;
-    }
-
-    .movie-content h3{
-      font-weight:700;
-    }
-
-    /* Footer */
-
-    .footer{
-      background:#050505;
-      border-top:1px solid rgba(255,255,255,0.08);
-      padding:40px 0;
-    }
-
-    .footer-links a{
-      color:#bbb;
-      text-decoration:none;
-      margin:0 12px;
-      transition:0.3s;
-    }
-
-    .footer-links a:hover{
-      color:#fd8650;
-    }
-
-    /* Responsive */
-
-    @media(max-width:991px){
-
-      .hero h1{
-        font-size:4rem;
-      }
-
-      .section-title{
-        font-size:2.8rem;
-      }
-
-    }
-
-    @media(max-width:768px){
-
-      .hero{
-        text-align:center;
-      }
-
-      .hero h1{
-        font-size:3rem;
-      }
-
-      .hero p{
-        font-size:1rem;
-      }
-
-      .casting-banner{
-        text-align:center;
-      }
-
-      .section-title{
-        font-size:2.2rem;
-      }
-
-    }
-	
-  </style>
-  <style>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SRIHAANFILMS</title>
+
+<link rel="icon" type="image/png" href="logo.png">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#000;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#fd8650;
+border-radius:20px;
+}
+
+/* Navbar */
+
+.navbar{
+padding:18px 0;
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(14px);
+transition:0.4s;
+z-index:999;
+}
+
+.navbar-brand{
+font-size:2rem;
+font-weight:800;
+color:#fff !important;
+display:flex;
+align-items:center;
+}
+
+.navbar-brand img{
+height:60px;
+margin-right:10px;
+}
+
+.orange{
+color:#fd8650;
+}
+
+.nav-link{
+color:#fff !important;
+margin-left:15px;
+font-weight:500;
+position:relative;
+transition:0.4s;
+}
+
+.nav-link::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-5px;
+width:0%;
+height:2px;
+background:#fd8650;
+transition:0.4s;
+}
+
+.nav-link:hover::after{
+width:100%;
+}
+
+.nav-link:hover{
+color:#fd8650 !important;
+}
+
+/* HERO */
+
+.cinematic-banner{
+
+position:relative;
+min-height:100vh;
+
+background:
+linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.82)),
+url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2000&auto=format&fit=crop');
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+align-items:center;
+
+overflow:hidden;
+
+}
+
+.cinematic-banner::before{
+
+content:'';
+position:absolute;
+
+width:600px;
+height:600px;
+
+background:#fd8650;
+
+filter:blur(180px);
+opacity:0.15;
+
+top:-200px;
+right:-200px;
+
+border-radius:50%;
+
+}
+
+.banner-overlay{
+
+position:absolute;
+width:100%;
+height:100%;
+
+background:linear-gradient(to right,
+rgba(0,0,0,0.9),
+rgba(0,0,0,0.45));
+
+}
+
+.banner-subtitle{
+
+color:#fd8650;
+letter-spacing:8px;
+font-size:14px;
+font-weight:600;
+margin-bottom:25px;
+
+}
+
+.banner-title{
+
+font-size:5rem;
+font-weight:900;
+line-height:1;
+margin-bottom:30px;
+
+}
+
+.banner-title span{
+color:#fd8650;
+}
+
+.banner-text{
+
+font-size:1.15rem;
+line-height:2;
+max-width:650px;
+color:#ddd;
+
+}
+
+/* Buttons */
+
+.banner-buttons{
+
+margin-top:40px;
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+
+}
+
+.btn-primary-custom{
+
+background:#fd8650;
+padding:16px 40px;
+
+border-radius:14px;
+
+color:#fff;
+font-weight:600;
+text-decoration:none;
+
+transition:0.4s;
+
+box-shadow:0 0 40px rgba(253,134,80,0.35);
+
+}
+
+.btn-primary-custom:hover{
+
+background:#ff6b2d;
+transform:translateY(-5px);
+
+}
+
+.btn-outline-custom{
+
+padding:16px 40px;
+
+border:1px solid rgba(255,255,255,0.2);
+
+border-radius:14px;
+
+color:#fff;
+font-weight:600;
+text-decoration:none;
+
+transition:0.4s;
+
+}
+
+.btn-outline-custom:hover{
+
+background:#fff;
+color:#000;
+transform:translateY(-5px);
+
+}
+
+/* Watch Button */
+
+.watch-btn{
+
+margin-top:35px;
+display:inline-flex;
+align-items:center;
+gap:15px;
+
+color:#fff;
+text-decoration:none;
+
+font-weight:600;
+
+transition:0.4s;
+
+}
+
+.watch-btn i{
+
+width:60px;
+height:60px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:#fd8650;
+border-radius:50%;
+
+box-shadow:0 0 30px rgba(253,134,80,0.5);
+
+}
+
+.watch-btn:hover{
+transform:translateX(10px);
+}
+
+/* Social */
+
+.banner-social{
+
+margin-top:50px;
+
+}
+
+.banner-social a{
+
+width:55px;
+height:55px;
+
+display:inline-flex;
+align-items:center;
+justify-content:center;
+
+border-radius:50%;
+
+background:rgba(255,255,255,0.08);
+
+border:1px solid rgba(255,255,255,0.1);
+
+color:#fff;
+
+margin-right:12px;
+
+text-decoration:none;
+
+font-size:18px;
+
+transition:0.4s;
+
+}
+
+.banner-social a:hover{
+
+background:#fd8650;
+transform:translateY(-5px);
+
+box-shadow:0 0 30px rgba(253,134,80,0.6);
+
+}
+
+/* Banner Image */
+
+.banner-image{
+
+width:100%;
+max-width:520px;
+
+border-radius:25px;
+
+box-shadow:0 0 50px rgba(253,134,80,0.25);
+
+animation:float 4s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-20px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+/* Stats */
+
+.stats-section{
+
+padding:100px 0;
+background:#050505;
+
+}
+
+.stat-card{
+
+background:#111;
+padding:45px 25px;
+
+border-radius:25px;
+
+text-align:center;
+
+border:1px solid rgba(255,255,255,0.08);
+
+transition:0.4s;
+
+height:100%;
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-10px);
+
+border-color:#fd8650;
+
+box-shadow:0 0 40px rgba(253,134,80,0.15);
+
+}
+
+.stat-card i{
+
+font-size:3rem;
+color:#fd8650;
+
+margin-bottom:20px;
+
+}
+
+.stat-card h2{
+
+font-size:3rem;
+font-weight:800;
+
+}
+
+/* Featured */
+
+.featured{
+
+padding:120px 0;
+
+}
+
+.section-subtitle{
+
+color:#fd8650;
+
+letter-spacing:6px;
+
+text-transform:uppercase;
+
+font-size:14px;
+
+margin-bottom:15px;
+
+}
+
+.section-title{
+
+font-size:4rem;
+font-weight:800;
+
+margin-bottom:60px;
+
+}
+
+.movie-card{
+
+position:relative;
+
+background:#111;
+
+border-radius:25px;
+
+overflow:hidden;
+
+border:1px solid rgba(255,255,255,0.08);
+
+transition:0.5s;
+
+height:100%;
+
+}
+
+.movie-card:hover{
+
+transform:translateY(-10px);
+
+border-color:#fd8650;
+
+}
+
+.movie-card img{
+
+width:100%;
+height:450px;
+
+object-fit:cover;
+
+}
+
+.movie-card::before{
+
+content:'';
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+background:linear-gradient(to top,
+rgba(0,0,0,0.9),
+transparent);
+
+z-index:1;
+
+}
+
+.movie-content{
+
+position:absolute;
+
+bottom:0;
+left:0;
+
+padding:30px;
+
+z-index:2;
+
+}
+
+.movie-content h3{
+
+font-size:2rem;
+font-weight:700;
+
+}
+
+/* Founder */
+
+.founder-section{
+
+padding:120px 0;
+background:#0a0a0a;
+
+}
+
+.founder-box{
+
+background:#111;
+
+padding:50px;
+
+border-radius:30px;
+
+border:1px solid rgba(255,255,255,0.08);
+
+}
+
+.founder-img{
+
+width:350px;
+height:350px;
+
+object-fit:cover;
+
+border-radius:50%;
+
+border:5px solid #fd8650;
+
+box-shadow:0 0 40px rgba(253,134,80,0.35);
+
+display:block;
+margin:auto;
+
+}
+
+/* Casting Banner */
+
+.casting-banner{
+
+margin-top:60px;
+
+background:linear-gradient(135deg,#fd8650,#ff6a2a);
+
+padding:50px;
+
+border-radius:30px;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.casting-banner::before{
+
+content:'';
+
+position:absolute;
+
+width:350px;
+height:350px;
+
+background:rgba(255,255,255,0.1);
+
+border-radius:50%;
+
+right:-120px;
+top:-120px;
+
+}
+
+.casting-banner h2{
+
+font-size:3rem;
+font-weight:900;
+
+}
+
+/* Footer */
+
+.footer{
+
+padding:60px 0;
+
+background:#050505;
+
+border-top:1px solid rgba(255,255,255,0.08);
+
+}
+
+.footer-links{
+
+margin-top:20px;
+
+}
+
+.footer-links a{
+
+color:#aaa;
+
+margin:0 12px;
+
+text-decoration:none;
+
+transition:0.4s;
+
+}
+
+.footer-links a:hover{
+color:#fd8650;
+}
+
+/* Responsive */
+
+@media(max-width:991px){
+
+.banner-title{
+font-size:4rem;
+}
+
+.section-title{
+font-size:3rem;
+}
+
+}
+
+@media(max-width:768px){
+
+.cinematic-banner{
+
+text-align:center;
+padding:120px 0;
+
+}
+
+.banner-title{
+font-size:2.8rem;
+}
+
+.banner-buttons{
+justify-content:center;
+}
+
+.banner-social{
+text-align:center;
+}
+
+.section-title{
+font-size:2.3rem;
+}
+
+.casting-banner{
+text-align:center;
+}
+
+}
+
+</style>
+ <style>
   /* Disable text selection across the entire website via CSS */
   body {
     -webkit-touch-callout: none; /* iOS Safari */
@@ -428,197 +737,327 @@
   });
 </script>
 </head>
+
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-  <div class="container">
+<!-- NAVBAR -->
 
-  <a class="navbar-brand d-flex align-items-center" href="#">
-  <img src="logo.png" alt="Srihaan Films Logo" width="60" height="40" class="me-2">
-  <span>SRIHAAN<span class="orange">FILMS</span></span>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+<div class="container">
+
+<a class="navbar-brand" href="#">
+
+<img src="logo.png">
+
+SRIHAAN<span class="orange">FILMS</span>
+
 </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
 
-    <div class="collapse navbar-collapse" id="navMenu">
+<span class="navbar-toggler-icon"></span>
 
-      <ul class="navbar-nav ms-auto align-items-lg-center">
+</button>
 
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="founder.html">Founder</a></li>
-        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
-        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="form.html">Auditions</a></li>
-        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-        <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+<div class="collapse navbar-collapse" id="navMenu">
 
-      </ul>
+<ul class="navbar-nav ms-auto align-items-lg-center">
 
-    </div>
-  </div>
+<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="founder.html">Founder</a></li>
+<li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+<li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+<li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+<li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+<li class="nav-item"><a class="nav-link" href="form.html">Auditions</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+
+</ul>
+
+</div>
+
+</div>
+
 </nav>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="container hero-content">
+<!-- HERO BANNER -->
 
-    
+<section class="cinematic-banner">
 
-    
+<div class="banner-overlay"></div>
 
-    <!-- Casting Banner -->
+<div class="container position-relative">
 
-    <div class="casting-banner">
-      <div class="row align-items-center">
+<div class="row align-items-center min-vh-100">
 
-        <div class="col-lg-8">
-          <h2>
-            🎬 Casting Open For Upcoming Projects&nbsp;
-			&nbsp;
-			
-          </h2>
+<div class="col-lg-7">
 
-          <p class="mt-3 mb-0">
-            Actors, Writers, Editors, Cinematographers & Creative Artists are invited to collaborate with SRIHAANFILMS.<a href="form.html" target="_blank" class="btn btn-light px-4 py-3 rounded-4 fw-semibold d-inline-flex align-items-center">
-  Apply Now
+<p class="banner-subtitle">
+INDEPENDENT FILM PRODUCTION
+</p>
+
+<h1 class="banner-title">
+STORIES THAT <br>
+CREATE <span>EMOTIONS</span>
+</h1>
+
+<p class="banner-text">
+
+SRIHAANFILMS creates emotional cinema,
+cinematic visuals and unforgettable storytelling experiences.
+
+</p>
+
+<div class="banner-buttons">
+
+<a href="projects.html" class="btn-primary-custom">
+Explore Projects
 </a>
-          </p>
-        </div>
 
-        <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
-          	  
-		
-		  <img src="logo.png" height="190px" width="280px">
-		  
-        </div>
+<a href="form.html" class="btn-outline-custom">
+Join Auditions
+</a>
 
-      </div>
-    </div>
+</div>
 
-  </div>
+<a href="https://www.youtube.com/@srihaanfilms" class="watch-btn">
+
+<i class="fas fa-play"></i>
+
+WATCH Latest Movie Trailer 
+
+</a>
+
+<div class="banner-social">
+
+<a href="https://www.instagram.com/srihaanfilms">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://www.youtube.com/@srihaanfilms">
+<i class="fab fa-youtube"></i>
+</a>
+
+<a href="https://www.facebook.com/srihaanfilms">
+<i class="fab fa-facebook"></i>
+</a>
+
+<a href="https://x.com/srihaanfilms">
+<i class="fab fa-x-twitter"></i>
+</a>
+
+</div>
+
+</div>
+
+<div class="col-lg-5 d-flex justify-content-center align-items-center">
+
+<a class="nav-link" href="form.html">
+
+  <img src="banner.png"
+  class="banner-image img-fluid"
+  alt="Banner Image">
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- Stats -->
+<!-- STATS -->
+
 <section class="stats-section">
-  <div class="container">
 
-    <div class="row g-4">
+<div class="container">
 
-      <div class="col-lg-3 col-md-6">
-        <div class="stat-card">
-          <h2>0</h2>
-          <p>Projects</p>
-        </div>
-      </div>
+<div class="row g-4">
 
-      <div class="col-lg-3 col-md-6">
-        <div class="stat-card">
-          <h2>2+</h2>
-          <p>Creative Artists</p>
-        </div>
-      </div>
+<div class="col-lg-3 col-md-6">
 
-      <div class="col-lg-3 col-md-6">
-        <div class="stat-card">
-          <h2>1K</h2>
-          <p>Views</p>
-        </div>
-      </div>
+<div class="stat-card">
 
-      <div class="col-lg-3 col-md-6">
-        <div class="stat-card">
-          <h2>2026</h2>
-          <p>Independent Journey</p>
-        </div>
-      </div>
+<i class="fas fa-film"></i>
 
-    </div>
+<h2>0</h2>
 
-  </div>
+<p>Projects</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="stat-card">
+
+<i class="fas fa-users"></i>
+
+<h2>0</h2>
+
+<p>Creative Artists</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="stat-card">
+
+<i class="fas fa-eye"></i>
+
+<h2>0</h2>
+
+<p>Views</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="stat-card">
+
+<i class="fas fa-calendar"></i>
+
+<h2>2026</h2>
+
+<p>Independent Journey</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- Featured Projects --
-<section class="featured-section">
-  <div class="container">
+<!-- FEATURED -
 
-    <div class="text-center">
-      <p class="section-subtitle">Featured Productions</p>
-      <h2 class="section-title">Latest Cinematic Works</h2>
-    </div>
+<section class="featured">
 
-    <div class="row g-4">
+<div class="container">
 
-      <div class="col-lg-4 col-md-6">
-        <div class="movie-card">
+<div class="text-center">
 
-          <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=1200&auto=format&fit=crop">
+<p class="section-subtitle">
+FEATURED PRODUCTIONS
+</p>
 
-          <div class="movie-content">
-            <h3>Dear Sister</h3>
-            <p class="text-secondary mt-3">
-              Independent Web Series
-            </p>
-          </div>
+<h2 class="section-title">
+LATEST CINEMATIC WORKS
+</h2>
 
-        </div>
-      </div>
+</div>
 
-      <div class="col-lg-4 col-md-6">
-        <div class="movie-card">
+<div class="row g-4">
 
-          <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1200&auto=format&fit=crop">
+<div class="col-lg-4">
 
-          <div class="movie-content">
-            <h3>A Forgotten Chola Queen</h3>
-            <p class="text-secondary mt-3">
-              Historical Drama
-            </p>
-          </div>
+<div class="movie-card">
 
-        </div>
-      </div>
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop">
 
-      <div class="col-lg-4 col-md-6">
-        <div class="movie-card">
+<div class="movie-content">
 
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop">
+<h3>Dear Sister</h3>
 
-          <div class="movie-content">
-            <h3>The Last Frame</h3>
-            <p class="text-secondary mt-3">
-              Short Film Production
-            </p>
-          </div>
+<p class="text-light mt-2">
+Independent Emotional Drama
+</p>
 
-        </div>
-      </div>
+</div>
 
-    </div>
+</div>
 
-  </div>
+</div>
+
+<div class="col-lg-4">
+
+<div class="movie-card">
+
+<img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=1200&auto=format&fit=crop">
+
+<div class="movie-content">
+
+<h3>The Last Frame</h3>
+
+<p class="text-light mt-2">
+Short Film Production
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<div class="movie-card">
+
+<img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1200&auto=format&fit=crop">
+
+<div class="movie-content">
+
+<h3>Upcoming Projects</h3>
+
+<p class="text-light mt-2">
+New Cinematic Universe
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>--->
 
-<!-- Footer -->
+
+
+
+
+
+<!-- FOOTER -->
+
 <footer class="footer text-center">
-  <div class="container">
 
-    <h2 class="fw-bold mb-3">
-      SRIHAAN<span class="orange">FILMS</span>
-    </h2>
+<div class="container">
 
-    <p class="text-secondary mb-4">
-      
-    </p>
+<h2 class="fw-bold">
+SRIHAAN<span class="orange">FILMS</span>
+</h2>
 
-    <div class="footer-links">
+<p class="text-secondary mt-3">
 
-       <a href="https://www.instagram.com/srihaanfilms"><i class="fab fa-instagram"></i> Instagram</a>
+Cinema Beyond Imagination
+
+</p>
+
+<div class="footer-links">
+
+<a href="#">Home</a>
+<a href="#">Projects</a>
+<a href="#">Gallery</a>
+<a href="#">Contact</a>
+
+</div>
+ <div class="footer-links">
+
+      <a href="https://www.instagram.com/srihaanfilms"><i class="fab fa-instagram"></i> Instagram</a>
 <a href="https://www.youtube.com/@srihaanfilms"><i class="fab fa-youtube"></i> YouTube</a>
 <a href="https://www.facebook.com/srihaanfilms"><i class="fab fa-facebook"></i> Facebook</a>
 <a href="https://x.com/srihaanfilms"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
@@ -626,33 +1065,43 @@
 
     </div>
 
-  </div>
+<p class="text-secondary mt-4">
+
+© 2026 SRIHAANFILMS. All Rights Reserved.
+
+</p>
+
+</div>
+
 </footer>
 
-<!-- Bootstrap JS -->
+<!-- Bootstrap -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Navbar Scroll -->
+
 <script>
 
-  window.addEventListener('scroll', function(){
+window.addEventListener('scroll',function(){
 
-    const navbar = document.querySelector('.navbar');
+const navbar=document.querySelector('.navbar');
 
-    if(window.scrollY > 50){
-      navbar.style.background = '#000';
-      navbar.style.boxShadow = '0 10px 30px rgba(0,0,0,0.4)';
-    }
+if(window.scrollY>50){
 
-    else{
-      navbar.style.background = 'rgba(0,0,0,0.4)';
-      navbar.style.boxShadow = 'none';
-    }
+navbar.style.background='#000';
+navbar.style.boxShadow='0 10px 30px rgba(0,0,0,0.4)';
 
-  });
+}else{
+
+navbar.style.background='rgba(0,0,0,0.35)';
+navbar.style.boxShadow='none';
+
+}
+
+});
 
 </script>
 
 </body>
 </html>
-```
