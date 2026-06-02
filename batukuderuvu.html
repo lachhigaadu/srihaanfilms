@@ -1,0 +1,961 @@
+
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>బతుకుదెరువు | SRIHAANFILMS</title>
+
+
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Anek Telugu',sans-serif;
+background:#000;
+color:#fff;
+}
+
+/* TOP BANNER */
+
+.top-banner{
+background:linear-gradient(90deg,#fd8650,#ff6b2d);
+padding:12px;
+text-align:center;
+font-weight:700;
+font-size:18px;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 8%;
+background:rgba(0,0,0,.5);
+backdrop-filter:blur(15px);
+z-index:999;
+}
+
+.logo{
+font-size:28px;
+font-weight:900;
+}
+
+.logo span{
+color:#fd8650;
+}
+
+.navbar ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+.navbar a{
+color:#fff;
+text-decoration:none;
+font-weight:600;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.85)),
+url('poster.jpeg');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+}
+
+.hero-content h1{
+font-size:6rem;
+font-weight:900;
+text-shadow:0 0 30px #fd8650;
+}
+
+.hero-content p{
+font-size:1.3rem;
+margin:20px 0;
+}
+
+.btn{
+display:inline-block;
+padding:15px 35px;
+background:#fd8650;
+color:#fff;
+text-decoration:none;
+border-radius:50px;
+font-weight:700;
+}
+
+/* CONTENT */
+
+.main-content{
+display:flex;
+gap:25px;
+padding:80px 5%;
+}
+
+.video-box,
+.slideshow{
+flex:1;
+}
+
+.video-box iframe{
+width:100%;
+height:500px;
+border:none;
+border-radius:20px;
+}
+
+.slideshow{
+height:500px;
+position:relative;
+overflow:hidden;
+border-radius:20px;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transition:1s;
+}
+
+.slide.active{
+opacity:1;
+}
+
+
+
+/* SECTIONS */
+
+section{
+padding:80px 5%;
+}
+
+.section-title{
+font-size:3rem;
+margin-bottom:25px;
+color:#fd8650;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+height:250px;
+object-fit:cover;
+border-radius:15px;
+transition:.5s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+/* FOOTER */
+
+footer{
+background:#111;
+padding:40px;
+text-align:center;
+margin-top:50px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero-content h1{
+font-size:3rem;
+}
+
+.main-content{
+flex-direction:column;
+}
+
+.video-box iframe,
+.slideshow{
+height:260px;
+}
+
+.navbar{
+flex-direction:column;
+gap:10px;
+}
+
+.navbar ul{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+}
+
+.modal{
+display:none;
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.95);
+z-index:99999;
+justify-content:center;
+align-items:center;
+}
+
+.modal img{
+max-width:90%;
+max-height:90%;
+border-radius:15px;
+}
+
+.close-btn{
+position:absolute;
+top:20px;
+right:35px;
+font-size:50px;
+cursor:pointer;
+color:#fff;
+}
+
+
+
+.info-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+padding:40px 5%;
+}
+
+.card{
+background:#111;
+padding:30px;
+border-radius:20px;
+text-align:center;
+border:1px solid rgba(255,255,255,.1);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+border-color:#fd8650;
+box-shadow:0 0 30px rgba(253,134,80,.3);
+}
+
+.profile-img{
+width:120px;
+height:120px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid #fd8650;
+margin-bottom:15px;
+box-shadow:0 0 20px rgba(253,134,80,.4);
+}
+
+.card h3{
+color:#fd8650;
+margin-bottom:10px;
+}
+
+.social-links{
+margin-top:15px;
+}
+
+.social-links a{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+width:40px;
+height:40px;
+border-radius:50%;
+background:#222;
+color:#fff;
+margin:0 5px;
+text-decoration:none;
+transition:.3s;
+}
+
+.social-links a:hover{
+background:#fd8650;
+transform:translateY(-5px);
+}
+
+
+
+.hero-banner{
+width:100%;
+width:100%;
+height:auto;
+border-radius:20px;
+margin-bottom:25px;
+
+}
+
+.news-card b{
+color:#fd8650;
+font-weight:700;
+}
+.thanks-card{
+background:#111;
+padding:40px;
+border-radius:25px;
+border:1px solid rgba(255,255,255,.1);
+line-height:2;
+font-size:18px;
+box-shadow:0 0 30px rgba(0,0,0,.4);
+}
+
+.movie-title{
+font-size:2rem;
+color:#ff4d4d;
+margin-bottom:15px;
+text-align:center;
+}
+
+.lead-text{
+font-size:20px;
+font-weight:600;
+color:#fd8650;
+text-align:center;
+margin-bottom:25px;
+}
+
+.paper-list{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+justify-content:center;
+margin:30px 0;
+}
+
+.paper-list span{
+background:#fd8650;
+color:#fff;
+padding:10px 18px;
+border-radius:30px;
+font-weight:600;
+}
+
+.thanks-card b{
+color:#fd8650;
+}
+
+.signature{
+margin-top:40px;
+text-align:right;
+border-top:1px solid rgba(255,255,255,.1);
+padding-top:20px;
+}
+
+.signature h4{
+color:#fd8650;
+margin-bottom:15px;
+}
+
+
+.action-buttons{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+margin-top:30px;
+}
+
+.action-btn{
+display:flex;
+align-items:center;
+justify-content:center;
+min-width:220px;
+padding:15px 25px;
+background:linear-gradient(135deg,#fd8650,#ff6b2d);
+color:#fff;
+text-decoration:none;
+font-weight:700;
+border-radius:50px;
+box-shadow:0 0 20px rgba(253,134,80,.4);
+transition:.4s;
+}
+
+.action-btn:hover{
+transform:translateY(-5px) scale(1.05);
+box-shadow:0 0 35px rgba(253,134,80,.8);
+}
+
+@media(max-width:768px){
+
+.action-btn{
+width:100%;
+}
+
+}
+
+
+</style>
+<style>
+  /* Disable text selection across the entire website via CSS */
+  body {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Safari */
+    -khtml-user-select: none;     /* Konqueror HTML */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently supported by Chrome, Opera, and Edge */
+  }
+</style>
+
+<script>
+  // 1. Disable Right-Click (Context Menu)
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  // 2. Disable Key Combinations (Ctrl+U, Ctrl+C, Ctrl+S, Ctrl+Shift+I, F12)
+  document.addEventListener('keydown', function(e) {
+    
+    // Check if Ctrl key (or Cmd key on Mac) is pressed
+    const isCtrl = e.ctrlKey || e.metaKey;
+
+    // Block Ctrl + U (View Source)
+    if (isCtrl && e.key.toLowerCase() === 'u') {
+      e.preventDefault();
+      return false;
+    }
+
+    // Block Ctrl + C (Copy)
+    if (isCtrl && e.key.toLowerCase() === 'c') {
+      e.preventDefault();
+      return false;
+    }
+
+    // Block Ctrl + S (Save Page)
+    if (isCtrl && e.key.toLowerCase() === 's') {
+      e.preventDefault();
+      return false;
+    }
+
+    // Block Ctrl + Shift + I (Developer Tools)
+    if (isCtrl && e.shiftKey && e.key.toLowerCase() === 'i') {
+      e.preventDefault();
+      return false;
+    }
+
+    // Block F12 (Developer Tools)
+    if (e.key === 'F12') {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // 3. Extra safeguard to completely kill the "copy" command event
+  document.addEventListener('copy', function(e) {
+    e.preventDefault();
+  });
+</script>
+</head>
+
+<body>
+<div id="imageModal" class="modal">
+
+<span class="close-btn" onclick="closeImage()">
+&times;
+</span>
+
+<img id="fullImage">
+
+</div>
+<div class="top-banner">
+🔥 SRIHAANFILMS PRESENTS – బతుకుదెరువు 🔥
+</div>
+
+<nav class="navbar">
+
+<div class="logo">
+SRIHAAN<span>FILMS</span>
+</div>
+
+<ul>
+<li><a href="index.html">Home</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+    <img src="wallposter-batuku.jpg" class="hero-banner" alt="బతుకుదెరువు Banner">
+
+    
+
+    
+
+<div class="action-buttons">
+
+<a href="#trailer" class="action-btn">
+🎬 Official Trailer
+</a>
+
+<a href="#prerelease" class="action-btn">
+🎤 Pre-Release Event
+</a>
+
+<a href="#movie" class="action-btn">
+🍿 Watch Movie
+</a>
+
+<a href="#making" class="action-btn">
+🎥 Making Video
+</a>
+
+<a href="#opinions" class="action-btn">
+⭐ Cast & Crew Opinions
+</a>
+
+</div>
+
+
+</div>
+
+</section>
+
+<section id="trailer">
+
+<div class="main-content">
+
+<div class="video-box">
+
+<iframe
+src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+allowfullscreen>
+</iframe>
+
+</div>
+
+<div class="slideshow">
+
+<img src="bt1.jpg" class="slide active">
+<img src="bt2.jpg" class="slide">
+<img src="bt3.jpg" class="slide">
+<img src="bt4.jpg" class="slide">
+<img src="bt5.jpg" class="slide">
+<img src="bt6.jpg" class="slide">
+<img src="bt7.jpg" class="slide">
+<img src="bt8.jpg" class="slide">
+
+</div>
+
+</div>
+
+</section>
+
+<div class="info-grid">
+
+<div class="card">
+
+<img src="logo1.png" class="profile-img">
+
+<h3>Producer</h3>
+
+<p>SRIHAANFILMS</p>
+
+<div class="social-links">
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="Kulkarnivishnukantth.jpg" class="profile-img">
+
+<h3>Director</h3>
+
+<p>Kulkarni Vishnukanth</p>
+
+<div class="social-links">
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="CHANDRASHEKAR.jpg" class="profile-img">
+
+<h3>Cinematographer</h3>
+
+<p>CHANDRASHEKAR GIDDALAMARI</p>
+
+<div class="social-links">
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+
+</div>
+
+<div class="card">
+<img src="dop.jpg" class="profile-img">
+<h3>సీతగా నటిస్తున్నది<h3>
+<p style="color:white;">UMARANI YADAV</p>
+<div class="social-links">
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+</div>
+
+
+<div class="card">
+<img src="dop.jpg" class="profile-img">
+<h3>కిరణ్‎గా నటిస్తున్నది<h3>
+<p style="color:white;">K SHIVA SHANKAR</p>
+<div class="social-links">
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+</div>
+
+<div class="card">
+<img src="dop.jpg" class="profile-img">
+<h3>పుల్లయ్య‎గా నటిస్తున్నది<h3>
+<p style="color:white;">MANGALI NARSIMULU</p>
+<div class="social-links">
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+</div>
+
+<div class="card">
+<img src="dop.jpg" class="profile-img">
+<h3>పోకిరిగా నటిస్తున్నది<h3>
+<p style="color:white;">RAJU</p>
+<div class="social-links">
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+</div>
+
+
+<div class="card">
+
+<img src="telugu.jpg" class="profile-img">
+
+<h3>Language</h3>
+
+<p>Telugu</p>
+
+</div>
+
+</div>
+
+<section id="about">
+
+<h2 class="section-title">
+About Film
+</h2>
+
+<p style="line-height:2;font-size:18px;">
+"బతుకుదెరువు" ఒక సామాజిక సందేశాత్మక షార్ట్ ఫిల్మ్.
+సాధారణ మనిషి జీవన పోరాటాన్ని,
+సమాజంలోని వాస్తవ పరిస్థితులను,
+భావోద్వేగాలతో చూపించే ప్రయత్నం.
+ఈ చిత్రం ప్రేక్షకుల హృదయాలను తాకేలా రూపొందించబడింది.
+</p>
+
+</section>
+
+<section id="gallery">
+
+<h2 class="section-title">
+📰 వార్తల్లో బతుకుదెరువు
+</h2>
+    <img src="wallposter-batuku.jpg" class="hero-banner" alt="బతుకుదెరువు Banner">
+
+<div class="gallery">
+
+<img src="slide1.jpeg" onclick="openImage(this.src)">
+<img src="slide2.jpeg" onclick="openImage(this.src)">
+<img src="slide3.jpeg" onclick="openImage(this.src)">
+<img src="slide4.jpeg" onclick="openImage(this.src)">
+<img src="slide5.jpeg" onclick="openImage(this.src)">
+<img src="slide6.jpeg" onclick="openImage(this.src)">
+<img src="slide7.jpeg" onclick="openImage(this.src)">
+
+</div>
+
+
+</section>
+
+
+<section id="media-thanks">
+
+<h2 class="section-title">
+📰 పత్రికా ప్రకటన (ప్రెస్ నోట్)
+</h2>
+
+<div class="thanks-card">
+
+<p class="news-subtitle">
+శ్రీహాన్ ఫిల్మ్స్ ప్రొడక్షన్ హౌస్ సగర్వంగా ప్రకటిస్తున్న నూతన చిత్రం
+</p>
+
+<h3 class="news-title">
+🎬 ‘బతుకుదెరువు’ ఘనంగా ప్రారంభం
+</h3>
+
+<p class="news-location">
+<b>జహీరాబాద్:</b>
+</p>
+
+<p>
+సమాజంలోని వాస్తవ పరిస్థితులను, సామాన్యుడి జీవన పోరాటాన్ని ప్రజల కళ్లకు కట్టాలనే సదుద్దేశ్యంతో
+<b>శ్రీహాన్ ఫిల్మ్స్ ప్రొడక్షన్ హౌస్</b> బ్యానర్‌పై ఎంతో ప్రతిష్టాత్మకంగా రూపొందిస్తున్న షార్ట్ ఫిల్మ్
+<b>“బతుకుదెరువు”</b>.
+ఈ చిత్ర పూజా కార్యక్రమాలు జహీరాబాద్ పట్టణ పరిధిలోని
+<b>శ్రీ సిద్ధేశ్వర ఆలయం</b>లో అత్యంత వైభవంగా నిర్వహించబడ్డాయి.
+</p>
+
+<p>
+ప్రముఖ సినీ నిర్మాత <b>శ్రీ మల్కాపురం శివకుమార్</b> ముఖ్య అతిథిగా హాజరై
+ముహూర్తపు సన్నివేశానికి తొలి క్లాప్ ఇచ్చి చిత్రాన్ని లాంఛనంగా ప్రారంభించారు.
+అలాగే ఆలయ ప్రధాన అర్చకులు <b>సంగమేశ్వర్ గారు</b>
+ప్రత్యేక పూజలు నిర్వహించి చిత్ర బృందానికి ఆశీర్వచనాలు అందించారు.
+</p>
+
+<p>
+ఈ చిత్రానికి <b>చంద్రశేఖర్ గిద్దలమారి</b>
+నిర్మాతగా మరియు సినిమాటోగ్రాఫర్ (డీఓపీ)గా వ్యవహరిస్తుండగా,
+<b>కులకర్ణి విష్ణుకాంత్</b> దర్శకత్వ బాధ్యతలు నిర్వర్తిస్తున్నారు.
+</p>
+
+<p>
+ప్రారంభోత్సవ కార్యక్రమంలో చిత్ర నటీనటులు
+<b>శంకర్, ఉమారాణి, నరేష్, నర్సింలు</b>
+తదితరులు పాల్గొన్నారు.
+అలాగే సాంకేతిక బృందానికి చెందిన
+<b>ప్రభాకర్, కాశీనాథం, జై, పోలీస్ ప్రవీణ్ పాటిల్,
+కే. విజయ్ కుమార్</b> తదితరులు హాజరై కార్యక్రమాన్ని విజయవంతం చేశారు.
+</p>
+
+<p>
+కమర్షియల్ హంగుల కంటే కంటెంట్‌కు పెద్దపీట వేస్తూ,
+సామాజిక అంశాలను ప్రతిబింబించే ఈ నిజాయితీ గల ప్రయత్నాన్ని
+ప్రేక్షకులు, సినీ అభిమానులు మరియు మీడియా మిత్రులు
+ఆదరించి ఆశీర్వదించాలని చిత్ర బృందం కోరుతోంది.
+</p>
+
+<div class="news-sign">
+— ఇట్లు,<br>
+<b>శ్రీహాన్ ఫిల్మ్స్ ప్రొడక్షన్ హౌస్ బృందం</b>
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<section id="media-thanks">
+
+<h2 class="section-title">
+📰 మీడియా మిత్రులకు ‘శ్రీహాన్ ఫిల్మ్స్’ ప్రత్యేక ధన్యవాదాలు!
+</h2>
+
+<div class="thanks-card">
+
+<h3 class="movie-title">
+🎬 బతుకుదెరువు
+</h3>
+
+<p class="lead-text">
+సినిమాకు అండగా నిలిచిన పత్రికా మిత్రులకు హృదయపూర్వక కృతజ్ఞతలు!
+</p>
+
+<p>
+<b>శ్రీహాన్ ఫిల్మ్స్ ప్రొడక్షన్ హౌస్</b> పతాకంపై,
+సామాన్యుడి అస్తిత్వ పోరాటాన్ని కళ్లకు కట్టేలా
+మేము ప్రతిష్టాత్మకంగా నిర్మిస్తున్న
+<b>"బతుకుదెరువు"</b> షార్ట్ ఫిల్మ్ ప్రారంభోత్సవ కార్యక్రమాన్ని
+తమ పత్రికల్లో ప్రముఖంగా ప్రచురించి,
+మాకు ఎంతగానో అండగా నిలిచిన
+పత్రికా యాజమాన్యాలకు, ఎడిటర్లకు మరియు విలేకరులకు
+మా హృదయపూర్వక ధన్యవాదాలు.
+</p>
+
+<p>
+చిన్న చిత్రంగా మొదలైన మా ప్రయత్నాన్ని గుర్తించి,
+సమాజానికి మేం అందించాలనుకున్న సందేశాన్ని ప్రజల్లోకి విస్తృతంగా తీసుకెళ్లేందుకు
+తమవంతు సహకారం అందించిన మీడియా సంస్థలకు
+మేము ప్రత్యేక కృతజ్ఞతలు తెలియజేస్తున్నాము.
+</p>
+
+<div class="paper-list">
+
+<span>📰 నమస్తే తెలంగాణ</span>
+<span>📰 భారత్ తెలుగు</span>
+<span>📰 స్థానికం</span>
+<span>📰 విశాల తెలంగాణ</span>
+<span>📰 పెన్ గన్</span>
+<span>📰 భారతీయ వెలుగు</span>
+<span>📰 మెరుపు</span>
+
+</div>
+
+<p>
+మీరు అందించిన ఈ మద్దతు, ప్రోత్సాహం మాకు మరింత
+బాధ్యతను, ఆత్మవిశ్వాసాన్ని కలిగించాయి.
+మంచి ఉద్దేశ్యంతో రూపొందిస్తున్న మా చిత్రానికి
+మీడియా మిత్రులు అందించిన సహకారాన్ని
+మేము ఎప్పటికీ మరిచిపోలేము.
+</p>
+
+<p>
+భవిష్యత్తులో కూడా మీ సహకారం, ఆశీస్సులు
+మా చిత్ర బృందంపై ఇలాగే కొనసాగాలని
+మనస్ఫూర్తిగా కోరుకుంటున్నాము.
+</p>
+
+<div class="signature">
+
+<h4>కృతజ్ఞతలతో...</h4>
+
+<p>
+<b>చంద్రశేఖర్ గిద్దలమారి</b><br>
+(చిత్ర నిర్మాత & సినిమాటోగ్రాఫర్)
+</p>
+
+<p>
+<b>కులకర్ణి విష్ణుకాంత్</b><br>
+(దర్శకుడు)
+</p>
+
+<p>
+<b>శ్రీహాన్ ఫిల్మ్స్ ప్రొడక్షన్ హౌస్ బృందం</b>
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2 class="section-title">
+Contact
+</h2>
+
+<p>Email : srihaanfilms@gmail.com</p>
+<p>Instagram : @srihaanfilms</p>
+<p>YouTube : SrihaanFilms</p>
+
+</section>
+
+<footer>
+
+<h2>SRIHAANFILMS</h2>
+
+<p>
+Cinema Beyond Imagination
+</p>
+
+<p style="margin-top:15px;">
+© 2026 SRIHAANFILMS. All Rights Reserved.
+</p>
+
+</footer>
+<script>
+function openImage(src){
+
+document.getElementById("imageModal").style.display="flex";
+
+document.getElementById("fullImage").src=src;
+
+}
+
+function closeImage(){
+
+document.getElementById("imageModal").style.display="none";
+
+}
+
+document.getElementById("imageModal").addEventListener("click",function(e){
+
+if(e.target===this){
+
+closeImage();
+
+}
+
+});
+</script>
+<script>
+
+const slides=document.querySelectorAll('.slide');
+
+let current=0;
+
+setInterval(()=>{
+
+slides[current].classList.remove('active');
+
+current++;
+
+if(current>=slides.length){
+current=0;
+}
+
+slides[current].classList.add('active');
+
+},3000);
+
+</script>
+
+</body>
+</html>
+
